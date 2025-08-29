@@ -1,73 +1,30 @@
 "use client";
 import Image from "next/image";
-import { useState, useRef, useEffect } from "react";
-import { gsap } from "gsap";
-import { TextPlugin } from "gsap/TextPlugin";
+import { useState } from "react";
 import CircularText from "../components/CircularText";
-
-gsap.registerPlugin(TextPlugin);
+import FloatingMenuBar from "../components/FloatingMenuBar";
 
 export default function Home() {
   const [isDeveloperMode, setIsDeveloperMode] = useState(false);
-  const headingRef = useRef<HTMLHeadingElement>(null);
-
-  const scrambleAnimation = (newText: string) => {
-    if (!headingRef.current) return;
-    
-    const element = headingRef.current;
-    const originalText = element.textContent || "";
-    const chars = "XO10@#!$%";
-    
-    // Create a timeline for the scramble effect
-    const tl = gsap.timeline();
-    
-    // Phase 1: Scramble the text
-    for (let i = 0; i < 8; i++) {
-      tl.to(element, {
-        duration: 0.1,
-        text: originalText.split('').map(char => 
-          char === '\n' || char === ' ' ? char : chars[Math.floor(Math.random() * chars.length)]
-        ).join(''),
-        ease: "none"
-      }, i * 0.05);
-    }
-    
-    // Phase 2: Reveal the new text
-    tl.to(element, {
-      duration: 0.8,
-      text: newText,
-      ease: "none"
-    });
-  };
-
-  const handleModeToggle = (newMode: boolean) => {
-    const newText = newMode 
-      ? "DESIGN ENGINEER\nWHO CAN DESIGN\nBASED IN LONDON,UK"
-      : "PRODUCT DESIGNER\nWITH 8 YRS OF EXP.\nBASED IN LONDON,UK";
-    
-    scrambleAnimation(newText);
-    setTimeout(() => setIsDeveloperMode(newMode), 100);
-  };
 
   return (
-   
-   
-    <div className={`flex flex-col items-center justify-center min-h-screen transition-colors duration-300 ${
-      isDeveloperMode ? 'bg-black text-white' : 'bg-white text-black'
-    }`}>
+    <div 
+      className={`relative flex flex-col items-center justify-center min-h-screen transition-colors duration-300 ${
+        isDeveloperMode ? 'bg-black text-white' : 'bg-white text-black'
+      }`}
+    >
 
-      
-      {/* Toggle Component */}
+      {/* Original Toggle Component */}
       <div className="flex items-center gap-6 mb-16">
         <span 
-          onClick={() => handleModeToggle(false)}
+          onClick={() => setIsDeveloperMode(false)}
           className={`text-2xl font-bold tracking-wider cursor-pointer ${!isDeveloperMode ? 'text-black' : 'text-gray-500'} ${!isDeveloperMode ? 'underline' : ''}`}
         >
           DESIGNER
         </span>
         
         <button
-          onClick={() => handleModeToggle(!isDeveloperMode)}
+          onClick={() => setIsDeveloperMode(!isDeveloperMode)}
           className={`relative w-20 h-10 rounded-full transition-colors duration-300 hover:cursor-pointer ${
             isDeveloperMode ? 'bg-[#38BDF8]' : 'bg-[#12B67A]'
           }`}
@@ -80,7 +37,7 @@ export default function Home() {
         </button>
         
         <span 
-          onClick={() => handleModeToggle(true)}
+          onClick={() => setIsDeveloperMode(true)}
           className={`text-2xl font-bold tracking-wider cursor-pointer ${isDeveloperMode ? 'text-white' : 'text-gray-500'} ${isDeveloperMode ? 'underline' : ''}`}
         >
           DEVELOPER
@@ -118,15 +75,11 @@ export default function Home() {
 <div className="flex sm:flex-col gap-8 max-w-[600px]">
 
 {/* Heading + Description */}
-<h1 
-  ref={headingRef}
-  className="text-[42px] leading-[62px] uppercase whitespace-pre-line font-mono w-full min-h-[186px]"
-  style={{ fontVariantNumeric: 'tabular-nums' }}
->
+<h1 className="text-[42px] leading-[62px] uppercase">
   {isDeveloperMode ? (
-    "DESIGN ENGINEER\nWHO CAN DESIGN\nBASED IN LONDON,UK"
+    <>DESIGN ENGINEER<br/>WHO CAN DESIGN<br/><span className="text-[#8C8C8C]">BASED IN LONDON,UK</span></>
   ) : (
-    "PRODUCT DESIGNER\nWITH 8 YRS OF EXP.\nBASED IN LONDON,UK"
+    <>PRODUCT DESIGNER<br/>WITH 8 YRS OF EXP.<br/><span className="text-[#8C8C8C]">BASED IN LONDON,UK</span></>
   )}
 </h1>
         <ol className="font-mono list-inside list-[square] text-lg text-center sm:text-left">
@@ -201,6 +154,12 @@ export default function Home() {
 
 
       </main>
+
+      {/* Floating Menu Bar */}
+      <FloatingMenuBar 
+        isDeveloperMode={isDeveloperMode}
+        setIsDeveloperMode={setIsDeveloperMode}
+      />
     
     </div>
   );
