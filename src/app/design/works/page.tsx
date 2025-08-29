@@ -125,8 +125,8 @@ export default function DesignWorksPage() {
           <section className="mt-24 text-center border-t border-gray-200 pt-16">
             <h3 className="text-3xl font-bold mb-6">Ready to work together?</h3>
             <p className="text-gray-600 text-lg mb-8 max-w-2xl mx-auto">
-              I'm always interested in new challenges and opportunities to create 
-              meaningful design solutions. Let's discuss your project.
+              I&apos;m always interested in new challenges and opportunities to create 
+              meaningful design solutions. Let&apos;s discuss your project.
             </p>
             <div className="flex gap-4 justify-center">
               <button className="bg-black text-white px-8 py-4 rounded-full font-medium hover:bg-gray-800 transition-colors">
