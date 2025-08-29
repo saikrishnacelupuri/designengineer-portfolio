@@ -1,3 +1,5 @@
+import { useRouter } from "next/navigation";
+
 interface FloatingMenuBarProps {
   isDeveloperMode: boolean;
   setIsDeveloperMode: (mode: boolean) => void;
@@ -7,7 +9,44 @@ export default function FloatingMenuBar({
   isDeveloperMode, 
   setIsDeveloperMode 
 }: FloatingMenuBarProps) {
-  const menuItems = ['About', 'Work', 'Playground'];
+  const router = useRouter();
+  
+  const menuItems = [
+    { name: 'About', id: 'about' },
+    { name: 'Work', id: 'works' },
+    { name: 'Playground', id: 'playground' }
+  ];
+
+  const handleNavigation = (item: { name: string; id: string }) => {
+    if (item.name === 'Work' && !isDeveloperMode) {
+      // Navigate to design works page for designer mode
+      router.push('/design/works');
+    } else if (item.name === 'About' || item.name === 'Playground') {
+      // Navigate back to home page for other sections
+      if (window.location.pathname !== '/') {
+        router.push('/');
+        // Small delay to ensure page loads before scrolling
+        setTimeout(() => {
+          const element = document.getElementById(item.id);
+          if (element) {
+            element.scrollIntoView({ 
+              behavior: 'smooth',
+              block: 'start' 
+            });
+          }
+        }, 100);
+      } else {
+        // Already on home page, just scroll
+        const element = document.getElementById(item.id);
+        if (element) {
+          element.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start' 
+          });
+        }
+      }
+    }
+  };
 
   return (
     <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50">
@@ -21,12 +60,13 @@ export default function FloatingMenuBar({
         <div className="flex items-center gap-6">
           {menuItems.map((item) => (
             <button
-              key={item}
+              key={item.name}
+              onClick={() => handleNavigation(item)}
               className={`text-sm font-medium tracking-wider uppercase transition-colors hover:opacity-70 ${
                 isDeveloperMode ? 'text-white' : 'text-black'
               }`}
             >
-              {item}
+              {item.name}
             </button>
           ))}
         </div>
