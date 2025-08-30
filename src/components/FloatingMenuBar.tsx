@@ -50,11 +50,35 @@ export default function FloatingMenuBar({
 
   return (
     <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50">
-      <div className={`flex items-center gap-6 px-8 py-4 rounded-full backdrop-blur-md border transition-all duration-300 ${
-        isDeveloperMode 
-          ? 'bg-black/80 border-white/20 text-white' 
-          : 'bg-white/80 border-black/20 text-black'
-      }`}>
+      <div 
+        className={`glass-container relative flex items-center gap-6 px-8 py-4 rounded-full backdrop-blur-xl backdrop-saturate-200 border transition-all duration-300 shadow-2xl ${
+          isDeveloperMode 
+            ? 'bg-black/15 border-white/10 text-white shadow-black/50' 
+            : 'bg-white/15 border-white/20 text-black shadow-black/10'
+        }`} 
+        style={{
+          backdropFilter: 'blur(40px) saturate(200%)',
+          WebkitBackdropFilter: 'blur(40px) saturate(200%)'
+        }}
+      >
+        {/* Glass effect pseudo-element */}
+        <div 
+          className="absolute inset-0 rounded-full pointer-events-none"
+          style={{
+            boxShadow: `
+              inset 2px 2px 0px -2px rgba(255, 255, 255, 0.7),
+              inset 0 0 3px 1px rgba(255, 255, 255, 0.7)
+            `,
+            WebkitBoxShadow: `
+              inset 2px 2px 0px -2px rgba(255, 255, 255, 0.7),
+              inset 0 0 3px 1px rgba(255, 255, 255, 0.7)
+            `,
+            zIndex: 1
+          }}
+        />
+        
+        {/* Content wrapper to ensure text stays above glass effect */}
+        <div className="relative z-10 flex items-center gap-6 w-full">
         
         {/* Menu Items */}
         <div className="flex items-center gap-6">
@@ -113,6 +137,8 @@ export default function FloatingMenuBar({
             DEVELOPER
           </span>
         </div>
+        
+        </div> {/* Close content wrapper */}
       </div>
     </div>
   );

@@ -33,7 +33,7 @@ export default function CircularText({
             className="absolute font-mono uppercase"
             style={{
               fontSize: `${fontSize}px`,
-              fontWeight:800,
+              fontWeight: 800,
               left: '50%',
               top: '50%',
               transform: `rotate(${angle}deg) translateY(-${radius}px)`,
