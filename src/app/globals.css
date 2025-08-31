@@ -30,3 +30,17 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Boldonse", ui-sans-serif, system-ui, sans-serif;
   text-transform: none;
 }
+
+/* Hide scrollbars for horizontal gallery */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
+}
+
+/* Smooth scrolling for horizontal gallery */
+.scrollbar-hide {
+  scroll-behavior: smooth;
+}
