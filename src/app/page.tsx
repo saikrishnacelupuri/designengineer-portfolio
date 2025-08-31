@@ -3,7 +3,6 @@ import Image from "next/image";
 import { useState } from "react";
 import CircularText from "../components/CircularText";
 import FloatingMenuBar from "../components/FloatingMenuBar";
-import ImageSlider from "../components/ImageSlider";
 import HorizontalGallery from "../components/HorizontalGallery";
 
 export default function Home() {
@@ -187,7 +186,7 @@ export default function Home() {
         <section className="w-full bg-[#F4F2EC] pt-[120px]">
           <div className="max-w-[1000px] mx-auto">
             <div className="pb-[80px]">
-              <h2 className="text-4xl font-bold mb-8 leading-16">NUROLE — UK's LEADING BOARD SEARCH PLATFORM
+              <h2 className="text-4xl font-bold mb-8 leading-16">NUROLE — UK&apos;s LEADING BOARD SEARCH PLATFORM
               </h2>
               <p className="text-gray-600 text-md max-w-3xl">
                 Selected projects showcasing design solutions for startups and scale-ups 

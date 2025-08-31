@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
-import Image from 'next/image';
 
 const CursorTrail = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -12,7 +11,6 @@ const CursorTrail = () => {
   const lastMousePos = useRef({ x: 0, y: 0 });
   const cachedMousePos = useRef({ x: 0, y: 0 });
   const currentMousePos = useRef({ x: 0, y: 0 });
-  const animationTimeout = useRef<NodeJS.Timeout | null>(null);
   const activeImagesCount = useRef(0);
   const isIdle = useRef(true);
   const zIndexVal = useRef(1);
@@ -54,7 +52,7 @@ const CursorTrail = () => {
     const container = containerRef.current;
     if (!container) return;
 
-    function addNewItem(x: number, y: number) {
+    function addNewItem() {
       const newItem = document.createElement("div");
       newItem.className = "absolute w-80 h-60 overflow-hidden";
       newItem.style.zIndex = String(zIndexVal.current++);
@@ -114,13 +112,20 @@ const CursorTrail = () => {
       // Always use current image and increment for next spawn
       imageIndex.current = (imageIndex.current + 1) % trailImages.length;
 
-      container.appendChild(newItem);
-      manageItemLimit();
+      if (container) {
+        container.appendChild(newItem);
+        manageItemLimit();
+      }
     }
 
     function manageItemLimit() {
-      while (container.children.length > 8) {
-        container.removeChild(container.firstChild);
+      if (container) {
+        while (container.children.length > 8) {
+          const firstChild = container.firstChild;
+          if (firstChild) {
+            container.removeChild(firstChild);
+          }
+        }
       }
     }
 
@@ -154,7 +159,7 @@ const CursorTrail = () => {
         
         // Only spawn based on frequency control
         if (spawnCounter.current % SPAWN_FREQUENCY === 0) {
-          addNewItem(currentX, currentY);
+          addNewItem();
         }
         
         lastMousePos.current = { x: currentX, y: currentY };
@@ -182,7 +187,7 @@ const CursorTrail = () => {
           
           // Only spawn based on frequency control
           if (spawnCounter.current % SPAWN_FREQUENCY === 0) {
-            addNewItem(currentX, currentY);
+            addNewItem();
           }
           
           lastMousePos.current = { x: currentX, y: currentY };
@@ -198,7 +203,7 @@ const CursorTrail = () => {
       container.removeEventListener('mousemove', handleMouseMove);
       container.removeEventListener('touchmove', handleTouchMove);
     };
-  }, [isMounted]);
+  }, [isMounted, trailImages]);
 
   if (!isMounted) return null;
 
