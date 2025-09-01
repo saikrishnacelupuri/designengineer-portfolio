@@ -38,22 +38,8 @@ const HorizontalGallery = ({ images }: HorizontalGalleryProps) => {
     // Start auto-scrolling
     animationId = requestAnimationFrame(autoScroll);
     
-    // Pause on hover
-    const handleMouseEnter = () => {
-      cancelAnimationFrame(animationId);
-    };
-    
-    const handleMouseLeave = () => {
-      animationId = requestAnimationFrame(autoScroll);
-    };
-    
-    scrollContainer.addEventListener('mouseenter', handleMouseEnter);
-    scrollContainer.addEventListener('mouseleave', handleMouseLeave);
-    
     return () => {
       cancelAnimationFrame(animationId);
-      scrollContainer.removeEventListener('mouseenter', handleMouseEnter);
-      scrollContainer.removeEventListener('mouseleave', handleMouseLeave);
     };
   }, []);
 

@@ -9,44 +9,6 @@ export default function FloatingMenuBar({
   isDeveloperMode, 
   setIsDeveloperMode 
 }: FloatingMenuBarProps) {
-  const router = useRouter();
-  
-  const menuItems = [
-    { name: 'About', id: 'about' },
-    { name: 'Work', id: 'works' },
-    { name: 'Playground', id: 'playground' }
-  ];
-
-  const handleNavigation = (item: { name: string; id: string }) => {
-    if (item.name === 'Work' && !isDeveloperMode) {
-      // Navigate to design works page for designer mode
-      router.push('/design/works');
-    } else if (item.name === 'About' || item.name === 'Playground') {
-      // Navigate back to home page for other sections
-      if (window.location.pathname !== '/') {
-        router.push('/');
-        // Small delay to ensure page loads before scrolling
-        setTimeout(() => {
-          const element = document.getElementById(item.id);
-          if (element) {
-            element.scrollIntoView({ 
-              behavior: 'smooth',
-              block: 'start' 
-            });
-          }
-        }, 100);
-      } else {
-        // Already on home page, just scroll
-        const element = document.getElementById(item.id);
-        if (element) {
-          element.scrollIntoView({ 
-            behavior: 'smooth',
-            block: 'start' 
-          });
-        }
-      }
-    }
-  };
 
   return (
     <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50">
@@ -78,28 +40,8 @@ export default function FloatingMenuBar({
         />
         
         {/* Content wrapper to ensure text stays above glass effect */}
-        <div className="relative z-10 flex items-center gap-6 w-full">
+        <div className="relative z-10 flex items-center justify-center w-full">
         
-        {/* Menu Items */}
-        <div className="flex items-center gap-6">
-          {menuItems.map((item) => (
-            <button
-              key={item.name}
-              onClick={() => handleNavigation(item)}
-              className={`text-sm font-medium tracking-wider uppercase transition-colors hover:opacity-70 ${
-                isDeveloperMode ? 'text-white' : 'text-black'
-              }`}
-            >
-              {item.name}
-            </button>
-          ))}
-        </div>
-
-        {/* Separator */}
-        <div className={`w-px h-6 ${
-          isDeveloperMode ? 'bg-white/30' : 'bg-black/30'
-        }`} />
-
         {/* Toggle Section */}
         <div className="flex items-center gap-4">
           <span 
