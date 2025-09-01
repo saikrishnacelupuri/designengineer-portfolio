@@ -47,7 +47,7 @@ const HorizontalGallery = ({ images }: HorizontalGalleryProps) => {
     <div className="w-full bg-[#F4F2EC] overflow-hidden">
      
       
-      <div ref={scrollRef} className="overflow-x-auto scrollbar-hide">
+      <div ref={scrollRef} className="overflow-x-auto scrollbar-hide" data-horizontal-scroll>
         <div 
           className="flex gap-6 pb-4 items-start"
         >

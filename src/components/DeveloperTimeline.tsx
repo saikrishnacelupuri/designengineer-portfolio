@@ -22,7 +22,7 @@ const projects = [
     tags: ["Next.js", "React", "TailwindCSS", "Vercel"],
     date: "2024",
     type: "project",
-    image: "/work-designer/Works section design.png",
+    image: "/OG_tier2.png",
     buttonText: "VIEW APPLICATION",
     buttonUrl: "https://tier2-sponsors-uk.vercel.app/"
   },
@@ -102,7 +102,7 @@ export default function DeveloperTimeline() {
   }, []);
 
   return (
-    <section className="w-full bg-[#131313] text-white pt-[120px] pb-[120px] relative">
+    <section className="w-full bg-[#131313] text-white pt-[120px] pb-[120px] relative mt-[160px]">
       {/* Noise overlay */}
       <div 
         className="absolute inset-0 opacity-20 mix-blend-soft-light pointer-events-none"

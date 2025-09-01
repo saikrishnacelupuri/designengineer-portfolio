@@ -1,14 +1,42 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Lenis from "lenis";
+import "lenis/dist/lenis.css";
 import CircularText from "../components/CircularText";
-import FloatingMenuBar from "../components/FloatingMenuBar";
+
 import HorizontalGallery from "../components/HorizontalGallery";
 import DeveloperTimeline from "../components/DeveloperTimeline";
-import Testimonials from "../components/Testimonials";
+import { TestimonialsFeature7 } from "../components/TestimonialsFeature7";
+import { Header1 } from "../components/Header1";
+import { Case2 } from "../components/Case2";
+import { Footer1 } from "../components/Footer1";
+import { MouseImageTrail } from "../components/MouseImageTrail";
 
 export default function Home() {
   const [isDeveloperMode, setIsDeveloperMode] = useState(false);
+
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      prevent: (node) => {
+        // Prevent Lenis on horizontal scroll containers
+        return node.closest('[data-horizontal-scroll]') !== null;
+      }
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
 
   return (
     <div 
@@ -16,40 +44,42 @@ export default function Home() {
         isDeveloperMode ? 'bg-black text-white' : 'bg-white text-black'
       }`}
     >
+      <Header1 isDeveloperMode={isDeveloperMode} setIsDeveloperMode={setIsDeveloperMode} />
       {/* Hero Section */}
-      <div className="relative flex flex-col items-center justify-center h-screen"
+      <div className="relative flex flex-col items-center justify-center pt-[280px]"
       >
 
-        {/* Bg-Pattern - Only in Designer Mode */}
+        {/* Bg-Pattern - Designer Mode */}
         {!isDeveloperMode && (
           <div 
-            className="absolute inset-0"
+            className="absolute inset-0 pointer-events-none"
             style={{
               background: 'radial-gradient(#d1d5db 1px, transparent 1px)',
               backgroundSize: '24px 24px',
               maskImage: 'radial-gradient(ellipse 60% 50% at 50% 50%, #000 60%, transparent 100%)',
               WebkitMaskImage: 'radial-gradient(ellipse 60% 50% at 50% 50%, #000 60%, transparent 100%)',
-              zIndex: -1
+              zIndex: 0
             }}
           ></div>
         )}
 
-        {/* Bg-Pattern - Only in Developer Mode */}
+        {/* Bg-Pattern - Developer Mode */}
         {isDeveloperMode && (
           <div
-            className="absolute inset-0 flex items-center justify-center"
-            style={{ zIndex: 1 }}
+            className="absolute inset-0 flex items-center justify-center pointer-events-none"
+            style={{ zIndex: 0 }}
           >
             <Image
               src="/bg-pixels.svg"
               alt="Background pixels"
-              width={800}
-              height={600}
+              width={1200}
+              height={800}
+              className="opacity-30"
             />
           </div>
         )}
 
-      {/* Original Toggle Component */}
+      {/*  Original Toggle Component
       <div className="relative flex items-center gap-6 mb-16" style={{ zIndex: 10 }}>
         <span 
           onClick={() => setIsDeveloperMode(false)}
@@ -78,6 +108,8 @@ export default function Home() {
           DEVELOPER
         </span>
       </div>
+
+       */}
      
       <main className={`flex gap-[80px] items-center max-w-[1120px] ${
         isDeveloperMode ? 'flex-row-reverse' : 'flex-row'
@@ -112,9 +144,9 @@ export default function Home() {
 {/* Heading + Description */}
 <h1 className="text-[42px] leading-[62px] uppercase">
   {isDeveloperMode ? (
-    <>DESIGN ENGINEER<br/>WHO CAN DESIGN<br/><span className="text-[#8C8C8C]">BASED IN LONDON,UK</span></>
+    <>DESIGN ENGINEER<br/>WHO CAN DESIGN<br/><span className="text-[#8C8C8C]">BASED IN LONDON, UK</span></>
   ) : (
-    <>PRODUCT DESIGNER<br/>WITH 8 YRS OF EXP.<br/><span className="text-[#8C8C8C]">BASED IN LONDON,UK</span></>
+    <>PRODUCT DESIGNER<br/>WITH 8 YRS OF EXP.<br/><span className="text-[#8C8C8C]">BASED IN LONDON, UK</span></>
   )}
 </h1>
         <ol className="font-mono list-inside list-[square] text-lg text-center sm:text-left">
@@ -161,7 +193,7 @@ export default function Home() {
           ) : (
             <>
               <button
-                onClick={() => window.open("https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app", "_blank")}
+                onClick={() => window.open("https://drive.google.com/file/d/1UlQuVnD0AhRsBaA_ATsA2u3BYRaeLsyJ/view?usp=sharing", "_blank")}
                 className="uppercase rounded-full border hover:cursor-pointer border-solid border-transparent transition-colors flex items-center justify-center bg-black text-white gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
               >
                 Download CV
@@ -183,24 +215,53 @@ export default function Home() {
       </main>
       </div>
 
-      {/* NR Works Section */}
+      {/* Case2 - Trusted by market leaders */}
+      {!isDeveloperMode && <Case2 />}
+
+
+
+      {/* BLACK BG NUROLEWorks Section */}
       {!isDeveloperMode && (
-        <section className="w-full bg-[#F4F2EC] pt-[120px] pb-[60px] ">
-          <div className="max-w-[1000px] mx-auto border-b-2 border-[#DFDCD6]">
-            <div className="pb-[80px]">
-              <p className="text-gray-600 text-md mb-4"> 
-                {/* 2022 - PRESENT */}
-              </p>
-              <h2 className="text-4xl font-bold mb-8 leading-16">NUROLE — UK&apos;s LEADING BOARD SEARCH PLATFORM
-              </h2>
-              <p className="text-gray-600 text-md max-w-3xl">
-                Selected projects showcasing design solutions for startups and scale-ups 
-                across different industries and challenges. Each project represents a unique 
-                approach to solving complex user experience problems.
-              </p>
+        <section className="w-full bg-black text-white py-[120px] ">
+          <div className="max-w-[1000px] mx-auto">
+            
+           {/* First Row - Header + Hero Image (50/50) */}
+            <div className="grid grid-cols-2 gap-16 mb-16">
+              {/* Left - Heading & Hero Image */}
+              <div>
+                <p className="text-gray-400 text-sm mb-4">{/* 2020 — PRESENT */}</p>
+                <h2 className="text-2xl font-bold mb-8 leading-tight">
+                  NUROLE.COM
+                </h2>
+                <div className="relative h-[300px] rounded-lg overflow-hidden">
+                  <Image
+                    src="/nr-team2.jpeg"
+                    alt="Team Offsite - 2022 | Chester, UK"
+                    fill
+                    className="object-cover"
+                  />
+               
+                </div>
+                <p className="text-whtie text-sm mt-4"> ✻ TEAM OFFSITE - JUL, 2025 | WINCHESTER, UK</p>
+              </div>
+
+              {/* Right - Description */}
+              <div className="flex flex-col justify-center">
+                <p className="text-[#929292] text-sm mb-4">🌱 2ND PRODUCT DESIGNER</p>
+                <p className="text-[#929292] text-md leading-relaxed mb-8">
+                  LEAD THE PRODUCT DESIGN AND RESEARCH, WORKED CLOSELY WITH HEAD OF PRODUCT TO INFLUENCE 
+                  THE FEATURE ROADMAP AND PROTOTYPED NEW FEATURE PROPOSALS ON GRAY-LABELING PAPERTRAIL&apos;S PRODUCT 
+                  OFFERINGS TO ENTERPRISE CUSTOMERS AND UPSELLING OPPORTUNITIES :
+                </p>
+                <ul className="space-y-3 text-white">
+                  <li>• REDESIGNED ONBOARDING FLOW AND INCREASED THE TRIAL TO ACTIVE CONVERSION BY 28%</li>
+                  <li>• CREATED A DESIGN SYSTEM FROM 0→1</li>
+                  <li>• INTRODUCED NEW CARD LAYOUT FOR ACCOUNTS & SUBSCRIPTION MANAGEMENT RESULTING IN MORE 
+                      THAN 1.5% OF USERS CREATING MULTIPLE ACCOUNTS WITHIN A SUBSCRIPTION.</li>
+                </ul>
+              </div>
             </div>
 
-            <div className="space-y-12">
               {/* Second Project - Matching App */}
               <article>
                 <div className="relative h-[576px]">
@@ -208,21 +269,21 @@ export default function Home() {
                     src="/work-designer/matching-placeholder.webp.png"
                     alt="MATCHING APP"
                     fill
-                    className="object-cover rounded-[16px]" 
+                    className="object-cover rounded-[16px]"
                   />
                 </div>
                 <div className="p-8">
-                  <h3 className="text-2xl font-bold text-black mb-2 leading-[48px]">
+                  <h3 className="text-2xl font-bold text-white mb-2 leading-[48px]">
                     MATCHING APP : (0→1) INTERNAL APPLICATION TO EFFECTIVELY SOURCE & TARGET CANDIDATES FOR ROLES.
                   </h3>
                   <p className="text-sm text-gray-600 mb-6">
-                    0 TO 1 / DATA-DASHBOARD / MATCHING ALGORITHM
+                   ✻ 0 TO 1 / DATA-DASHBOARD / MATCHING ALGORITHM
                   </p>
                 </div>
               </article>
 
-              {/* Third and Fourth Projects - Side by Side */}
-              <div className="flex gap-8">
+               {/* Third and Fourth Projects - Side by Side */}
+               <div className="flex gap-8">
                 <article className="w-[50%]">
                   <div className="relative h-[300px]">
                     <Image
@@ -233,7 +294,7 @@ export default function Home() {
                     />
                   </div>
                   <div className="p-6">
-                    <h3 className="text-xl font-bold text-black mb-2 leading-10">
+                    <h3 className="text-xl font-bold text-white mb-2 leading-10">
                       GUEST CHECKOUT : ALLOWING NON-MEMBERS TO APPLY ROLES
                     </h3>
                     <p className="text-sm text-gray-600 mb-4">
@@ -252,7 +313,7 @@ export default function Home() {
                     />
                   </div>
                   <div className="p-6">
-                    <h3 className="text-xl font-bold leading-10 text-black mb-2">
+                    <h3 className="text-xl font-bold leading-10 text-white mb-2">
                       INTERNAL ASSESSMENT VIEW IN CANDIDATE ASSESSMENT TOOLING
                     </h3>
                     <p className="text-sm text-gray-600 mb-4">
@@ -261,68 +322,87 @@ export default function Home() {
                   </div>
                 </article>
               </div>
-            </div>
           </div>
         </section>
       )}
 
 
 
-      {/* Papertrail Works Section */}
-      {!isDeveloperMode && (
-        <section className="w-full bg-[#F4F2EC] py-[60px] ">
-          <div className="max-w-[1000px] mx-auto border-b-2 border-[#DFDCD6]">
-            <div className="pb-[80px]">
-              <p className="text-gray-600 text-md mb-4"> 
-                {/* 2020 - 2022 */}
-              </p>
-              <h2 className="text-4xl font-bold mb-8 leading-16">PAPERTRAIL — ASSET MANAGEMENT AND INSPECTION LOGGING PLATFORM.
-              </h2>
-              <p className="text-gray-600 text-md max-w-3xl">
-                Lead the product design and research, worked closely with Head of Product to influence 
-                the feature roadmap and prototyped new feature proposals on Gray-labeling Papertrail&apos;s 
-                product offerings to enterprise customers and upselling opportunities.
-              </p>
+ {/* PAPERTRAIL Section */}
+ {!isDeveloperMode && (
+        <section className="w-full bg-white pt-[120px] pb-[120px]">
+          
+          <div className="max-w-[1000px] mx-auto">
+      
+      
+
+
+  {/* First Row - Header + Hero Image (50/50) */}
+  <div className="grid grid-cols-2 gap-16 mb-16">
+              {/* Left - Heading & Hero Image */}
+              <div>
+                <p className="text-gray-400 text-sm mb-4">{/* 2020 — 2022 */}</p>
+                <h2 className="text-2xl font-bold mb-8 leading-tight">
+                  PAPERTRAIL.IO
+                </h2>
+                <div className="relative h-[300px] rounded-lg overflow-hidden">
+                  <Image
+                    src="/papertrial/pp-team.png"
+                    alt="Team Offsite - 2022 | Chester, UK"
+                    fill
+                    className="object-contain h-full"
+                  />
+                
+                </div>
+                <p>✻ TEAM OFFSITE - 2022 | CHESTER, UK</p>
+              </div>
+
+              {/* Right - Description */}
+              <div className="flex flex-col justify-center bg-[#F4F2EC] p-8 rounded-2xl rotate-3 hover:rotate-2 hover:cursor-pointer">
+                <p className="text-gray-800 text-sm mb-4">🌱 2ND PRODUCT DESIGNER</p>
+                <p className="text-gray-800 text-md leading-relaxed mb-8">
+                  LEAD THE PRODUCT DESIGN AND RESEARCH, WORKED CLOSELY WITH HEAD OF PRODUCT TO INFLUENCE 
+                  THE FEATURE ROADMAP AND PROTOTYPED NEW FEATURE PROPOSALS ON GRAY-LABELING PAPERTRAIL&apos;S PRODUCT 
+                  OFFERINGS TO ENTERPRISE CUSTOMERS AND UPSELLING OPPORTUNITIES :
+                </p>
+                <ul className="space-y-3 text-gray-800">
+                  <li>• REDESIGNED ONBOARDING FLOW AND INCREASED THE TRIAL TO ACTIVE CONVERSION BY 28%</li>
+                  <li>• CREATED A DESIGN SYSTEM FROM 0→1</li>
+                  <li>• INTRODUCED NEW CARD LAYOUT FOR ACCOUNTS & SUBSCRIPTION MANAGEMENT RESULTING IN MORE 
+                      THAN 1.5% OF USERS CREATING MULTIPLE ACCOUNTS WITHIN A SUBSCRIPTION.</li>
+                </ul>
+              </div>
             </div>
 
+
+
+
+
+       
+
             <div className="space-y-12">
-              {/* Second Project - Shield Design System */}
-              <article>
-                <div className="relative h-[576px]">
-                  <Image
-                    src="/work-designer/matching-placeholder.webp.png"
-                    alt="SHIELD DESIGN SYSTEM"
-                    fill
-                    className="object-cover rounded-[16px]" 
-                  />
-                </div>
-                <div className="p-8">
-                  <h3 className="text-2xl font-bold text-black mb-2 leading-[48px]">
-                    CREATED SHIELD A DESIGN SYSTEM WHICH UNIFIED DESIGN SYSTEM FOR PAPERTRAIL&apos;S VISUAL LANGUAGE
-                  </h3>
-                  <p className="text-sm text-gray-600 mb-6">
-                    0 TO 1 / DESIGN SYSTEM / DOCUMENTATION
-                  </p>
-                </div>
-              </article>
+          
 
               {/* Third and Fourth Projects - Side by Side */}
               <div className="flex gap-8">
                 <article className="w-[50%]">
                   <div className="relative h-[300px]">
                     <Image
-                      src="/work-designer/Candidate-Assessment-Internal-View.png.png"
-                      alt="ONBOARDING FLOW"
+                      src="/papertrial/p-card1.png"
+                      alt="GUEST CHECKOUT"
                       fill
-                      className="object-contain w-full"
+                      className="object-cover rounded-md w-full"
                     />
                   </div>
                   <div className="p-6">
                     <h3 className="text-xl font-bold text-black mb-2 leading-10">
-                      REDESIGNED ONBOARDING FLOW AND INCREASED THE TRIAL TO ACTIVE CONVERSION BY 28%
+                    Created Shield a design
+system which Unified design
+system for Papertrail&apos;s
+visual language
                     </h3>
                     <p className="text-sm text-gray-600 mb-4">
-                      REDESIGN / SAAS / INSPECTION MANAGEMENT TOOL
+                    0 to 1 / DESIGN SYSTEM / DOCUMENTATION
                     </p>
                   </div>
                 </article>
@@ -330,18 +410,19 @@ export default function Home() {
                 <article className="w-[50%]">
                   <div className="relative h-[300px]">
                     <Image
-                      src="/work-designer/share-on-public-roles.png.png"
-                      alt="CARD LAYOUT REDESIGN"
+                      src="/papertrial/p-card2.png"
+                      alt="INTERNAL ASSESSMENT VIEW"
                       fill
-                      className="object-contain"
+                      className="object-cover rounded-md"
                     />
                   </div>
                   <div className="p-6">
                     <h3 className="text-xl font-bold leading-10 text-black mb-2">
-                      INTRODUCED NEW CARD LAYOUT FOR ACCOUNTS & SUBSCRIPTION MANAGEMENT
+                    Redesign core journeys to align with new
+                    account and template offerings.
                     </h3>
                     <p className="text-sm text-gray-600 mb-4">
-                      REDESIGN / SAAS / INSPECTION MANAGEMENT TOOL
+                    REDESIGN /  SAAS / INSPECTION MANAGEMENT TOOL
                     </p>
                   </div>
                 </article>
@@ -351,101 +432,182 @@ export default function Home() {
         </section>
       )}
 
-    {/* Full Width Horizontal Gallery */}
-    {!isDeveloperMode && (
-        <section className="w-full bg-[#F4F2EC]">
-          <HorizontalGallery
-                      images={[
-                      
-                        {
-                          src: "/NR/IMG_0312.jpg",
-                          alt: "Team Offsite - 2024 | Lympne, UK", 
-                          caption: "TEAM OFFSITE - 2024 | LYMPNE, UK"
-                        },
-                        {
-                          src: "/NR/IMG_0420.jpg",
-                          alt: "Desk Pictures",
-                          caption: "DESK PICTURES"
-                        },
-                        {
-                          src: "/NR/IMG_0498.jpg",
-                          alt: "Desk Pictures",
-                          caption: "DESK PICTURES"
-                        },
-                       
-                        {
-                          src: "/NR/team1.png",
-                          alt: "Team Lunch",
-                          caption: "LUNCHES"
-                        },
-                      
-                        {
-                          src: "/NR/IMG_0150.jpg",
-                          alt: "Team Lunch",
-                          caption: "LUNCHES"
-                        },
 
-                        {
-                          src: "/NR/team2.png",
-                          alt: "Team Lunch",
-                          caption: "LUNCHES"
-                        },
-                        {
-                          src: "/NR/pizza.png",
-                          alt: "Team Offsite - 2023 | Lympne, UK",
-                          caption: "TEAM OFFSITE - 2023 | LYMPNE, UK"
-                        },
-                     
-                        {
-                          src: "/NR/IMG_20221116_092820.jpg",
-                          alt: "Team Meeting",
-                          caption: "TEAM MEETINGS"
-                        },
-                        {
-                          src: "/NR/IMG_20221129_100036.jpg",
-                          alt: "Office Space",
-                          caption: "OFFICE SPACE"
-                        },
-                        {
-                          src: "/NR/IMG_20230523_085623.jpg",
-                          alt: "Team Event",
-                          caption: "TEAM EVENTS"
-                        },
-                        {
-                          src: "/NR/IMG_20230523_090608.jpg",
-                          alt: "Team Event",
-                          caption: "TEAM EVENTS"
-                        },
-                        {
-                          src: "/NR/IMG_20230523_091141.jpg",
-                          alt: "Team Event",
-                          caption: "TEAM EVENTS"
-                        },
-                        {
-                          src: "/NR/IMG_20230726_184808_855.jpg",
-                          alt: "Evening Event",
-                          caption: "EVENING EVENTS"
-                        }
-                      ]}
-                    />
+
+
+
+
+
+      {/* FLUJO Section */}
+      {!isDeveloperMode && (
+        <section className="w-full bg-[#F4F2EC] pt-[120px] pb-[60px]">
+          <div className="max-w-[1000px] mx-auto ">
+
+
+         
+
+
+         {/* First Row - Header + Hero Image (50/50) */}
+                 <div className="grid grid-cols-2 gap-16 mb-8">
+              {/* Left - Heading & Hero Image */}
+              <div>
+                <p className="text-gray-400 text-sm mb-4">{/* 2020 — PRESENT */}</p>
+                <h2 className="text-2xl font-bold mb-8 leading-tight">
+                  FLUJO.IO
+                </h2>
+             
+              </div>
+
+              {/* Right - Description */}
+              <div className="flex flex-col justify-center">
+                <p className="text-gray-800 text-sm mb-4">🌱 2ND PRODUCT DESIGNER</p>
+                <p className="text-gray-800 text-md leading-relaxed mb-8">
+                Founding designer driving Saas product design,
+creating comprehensive design system. Designed web
+and mobile experiences, collaborating closely with
+developers.
+                </p>
+              
+              </div>
+            </div>
+
+
+     {/* IMAGE */}
+            <div className="space-y-12">
+              {/* Second Project - Matching App */}
+              <article>
+                <div className="relative h-[576px]">
+                  <Image
+                    src="/flujo-card.png"
+                    alt="MATCHING APP"
+                    fill
+                    className="object-cover rounded-[16px]"
+                  />
+                </div>
+                <div className="p-8">
+                  
+                <p className="text-sm text-gray-700 mb-2">
+                0 to 1 /  SAAS / COMPLEX DATA DESIGN
+                  </p>
+                  <h3 className="text-xl font-bold uppercase text-black mb-2 leading-[40px]">
+                  FLUJO IS A COMMUNICATION & COLLABORATION SUITE FOR TEAMS. WITH NATIVELY BUILT KEY BUSINESS ESSENTIALS.
+                  </h3>
+                  
+                </div>
+              </article>
+
+            
+            </div>
+
+   {/* AKIFLOW */}
+   <div className="grid grid-cols-2 gap-16 mb-8 pt-12 border-t-2 border-[#DFDCD6]">
+              {/* Left - Heading & Hero Image */}
+              <div>
+                <p className="text-purple-600 text-sm mb-4">https://akiflow.com/</p>
+                <h2 className="text-2xl font-bold mb-8 leading-tight">
+                AKIFLOW. ( YC-S20 )
+                </h2>
+             
+              </div>
+
+              {/* Right - Description */}
+              <div className="flex flex-col justify-center">
+                <p className="text-gray-800 text-sm mb-4">🌱 2ND PRODUCT DESIGNER</p>
+                <p className="text-gray-800 text-md leading-relaxed mb-8">
+                Founding designer driving Saas product design,
+creating comprehensive design system. Designed web
+and mobile experiences, collaborating closely with
+developers.
+                </p>
+              
+              </div>
+            </div>
+
+
+               {/* HDB*/}
+   <div className="grid grid-cols-2 gap-16 mb-8 pt-12 border-t-2 border-[#DFDCD6]">
+              {/* Left - Heading & Hero Image */}
+              <div>
+                <p className="text-gray-400 text-sm mb-4">{/* 2020 - ( 6 Months ) _ */}</p>
+                <h2 className="text-2xl font-bold mb-8 leading-[40px]">
+                HDB ON THE GO <br/>[ 5M + DOWNLOADS ]
+                </h2>
+             
+              </div>
+
+              {/* Right - Description */}
+              <div className="flex flex-col justify-center">
+                <p className="text-gray-800 text-sm mb-8">DESIGN CONSULTANT</p>
+                <p className="text-gray-800 text-md leading-relaxed mb-8">
+                HDB FINANCIAL SERVICES WAS WORKING WITH A DESIGN
+AGENCY IN INDIA, AND I WAS LEADING THE DESIGN FOR
+THAT PROJECT ALONG WITH 1 OTHER JUNIOR DESIGNER. I
+WAS INVOLVED IN CONCEPT TO BUILD STAGE OF MOBILE APP
+DEVELOPMENT. 
+                </p>
+              
+              </div>
+            </div>
+
+              {/* IMAGE */}
+              <div className="space-y-12">
+              {/* Second Project - Matching App */}
+              <article>
+                <div className="relative h-[576px]">
+                  <Image
+                    src="/hdb-card.webp"
+                    alt="MATCHING APP"
+                    fill
+                    className="object-cover rounded-[16px]"
+                  />
+                </div>
+                <div className="p-8">
+                  
+                <p className="text-sm text-gray-700 mb-4">
+                0 to 1 /  FINTECH / BANKING
+                  </p>
+                  <h3 className="text-xl font-bold uppercase text-black mb-2 leading-[40px]">
+                  HDB FINANCIAL SERVICES IS A RBI REGISTERED INDIA&apos;S MOST TRUSTED LOAN PLATFORM FOR MORE THAN 17 YEARS WITH OVER 8 MILLION USERS AND 1700+ BRANCHES.
+                  </h3>
+
+              
+                  
+                </div>
+              </article>
+
+            
+            </div>
+
+
+            
+          </div>
         </section>
       )}
+
+
+
+  
 
       {/* Developer Timeline Section */}
       {isDeveloperMode && (
         <DeveloperTimeline />
       )}
 
-      {/* Testimonials Section */}
-      {!isDeveloperMode && <Testimonials />}
+      {/* Testimonials Section 
+      {!isDeveloperMode && <TestimonialsFeature7 />} */}
 
-      {/* Sketching Section */}
-      {!isDeveloperMode && (
+   
+
+      {/* Mouse Image Trail Section */}
+      {!isDeveloperMode && <MouseImageTrail />}
+         {/* Sketching Section */}
+         {!isDeveloperMode && (
       <section className="w-full bg-[#F4F2EC] py-24">
-        <div className="max-w-[1000px] mx-auto px-8 text-left">
-          <h2 className="text-4xl font-bold mb-4">
+        <div className="max-w-[1000px] mx-auto text-left">
+          <h2 className="text-4xl font-bold mb-4 leading-6">
+          
             🎨🌿<br/>
-            SKETCHING!<br/>
+            SPOT SKETCHES!<br/>
             <span className="text-sm font-normal lowercase">on the spot</span>
           </h2>
           <p className="text-gray-600 text-md max-w-2xl mx-auto mb-16 leading-relaxed">
@@ -500,12 +662,8 @@ export default function Home() {
       </section>
       )}
 
-      {/* Floating Menu Bar */}
-      <FloatingMenuBar 
-        isDeveloperMode={isDeveloperMode}
-        setIsDeveloperMode={setIsDeveloperMode}
-      />
-    
+      {/* Footer */}
+      <Footer1 />
     </div>
   );
 }
