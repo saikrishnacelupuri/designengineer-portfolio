@@ -49,7 +49,7 @@ export default function Testimonials() {
             WORDS, KUDOS & MESSAGES!!
           </h2>
           <p className="text-gray-500 text-sm uppercase tracking-wide">
-            // TESTIMONIALS
+            {/* TESTIMONIALS */}
           </p>
         </div>
 

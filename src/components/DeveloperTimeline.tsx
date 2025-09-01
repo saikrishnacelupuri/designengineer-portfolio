@@ -33,7 +33,7 @@ const projects = [
     tags: ["Next.js", "React", "GSAP", "Framer Motion", "TailwindCSS"],
     date: "2023", 
     type: "experiment",
-    image: "/work-designer/Works section design.png",
+    image: "/art-experiments.gif",
     buttonText: "VIEW EXPERIMENTS",
     buttonUrl: "https://krishna-experiments.vercel.app/"
   },

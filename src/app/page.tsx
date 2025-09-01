@@ -189,7 +189,7 @@ export default function Home() {
           <div className="max-w-[1000px] mx-auto border-b-2 border-[#DFDCD6]">
             <div className="pb-[80px]">
               <p className="text-gray-600 text-md mb-4"> 
-                //2022 - PRESENT
+                {/* 2022 - PRESENT */}
               </p>
               <h2 className="text-4xl font-bold mb-8 leading-16">NUROLE — UK&apos;s LEADING BOARD SEARCH PLATFORM
               </h2>
@@ -274,13 +274,13 @@ export default function Home() {
           <div className="max-w-[1000px] mx-auto border-b-2 border-[#DFDCD6]">
             <div className="pb-[80px]">
               <p className="text-gray-600 text-md mb-4"> 
-                //2020 - 2022
+                {/* 2020 - 2022 */}
               </p>
               <h2 className="text-4xl font-bold mb-8 leading-16">PAPERTRAIL — ASSET MANAGEMENT AND INSPECTION LOGGING PLATFORM.
               </h2>
               <p className="text-gray-600 text-md max-w-3xl">
                 Lead the product design and research, worked closely with Head of Product to influence 
-                the feature roadmap and prototyped new feature proposals on Gray-labeling Papertrail's 
+                the feature roadmap and prototyped new feature proposals on Gray-labeling Papertrail&apos;s 
                 product offerings to enterprise customers and upselling opportunities.
               </p>
             </div>
@@ -298,7 +298,7 @@ export default function Home() {
                 </div>
                 <div className="p-8">
                   <h3 className="text-2xl font-bold text-black mb-2 leading-[48px]">
-                    CREATED SHIELD A DESIGN SYSTEM WHICH UNIFIED DESIGN SYSTEM FOR PAPERTRAIL'S VISUAL LANGUAGE
+                    CREATED SHIELD A DESIGN SYSTEM WHICH UNIFIED DESIGN SYSTEM FOR PAPERTRAIL&apos;S VISUAL LANGUAGE
                   </h3>
                   <p className="text-sm text-gray-600 mb-6">
                     0 TO 1 / DESIGN SYSTEM / DOCUMENTATION
