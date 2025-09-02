@@ -61,9 +61,8 @@ const HorizontalGallery = ({ images }: HorizontalGalleryProps) => {
                 <img
                   src={image.src}
                   alt={image.alt}
-                  className="hover:scale-102 transition-transform duration-300"
+                  className="hover:scale-102 transition-transform duration-300 sm:max-w-[400px]"
                   style={{ maxWidth: '300px', height: 'auto' }}
-                  className="sm:max-w-[400px]"
                 />
               </div>
               <p className="text-xs sm:text-sm text-gray-600 mt-2 sm:mt-3 text-left uppercase tracking-wide font-medium max-w-xs">

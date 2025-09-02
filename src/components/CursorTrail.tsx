@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useMemo } from 'react';
 import { gsap } from 'gsap';
 
 const CursorTrail = () => {
@@ -21,7 +21,7 @@ const CursorTrail = () => {
   // Control spawn frequency (higher = slower spawning, fewer images)
   const SPAWN_FREQUENCY = 2; // Change this: 1=spawn every time, 2=spawn every 2nd time, etc.
 
-  const trailImages = [
+  const trailImages = useMemo(() => [
     '/trails/IMG_20210502_125608-scaled.jpg',
     '/trails/IMG_20210502_134142.jpg',
     '/trails/IMG_20210502_143840.jpg',
@@ -36,7 +36,7 @@ const CursorTrail = () => {
     '/trails/img5.png',
     '/trails/img6.png',
     '/trails/img7.webp'
-  ];
+  ], []);
 
   useEffect(() => {
     setIsMounted(true);

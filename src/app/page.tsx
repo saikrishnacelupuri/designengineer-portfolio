@@ -7,7 +7,6 @@ import CircularText from "../components/CircularText";
 
 import HorizontalGallery from "../components/HorizontalGallery";
 import DeveloperTimeline from "../components/DeveloperTimeline";
-import { TestimonialsFeature7 } from "../components/TestimonialsFeature7";
 import { Header1 } from "../components/Header1";
 import { Case2 } from "../components/Case2";
 import { Footer1 } from "../components/Footer1";
