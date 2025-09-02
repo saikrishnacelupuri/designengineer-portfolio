@@ -49,7 +49,7 @@ const HorizontalGallery = ({ images }: HorizontalGalleryProps) => {
       
       <div ref={scrollRef} className="overflow-x-auto scrollbar-hide" data-horizontal-scroll>
         <div 
-          className="flex gap-6 pb-4 items-start"
+          className="flex gap-4 sm:gap-6 pb-4 items-start"
         >
           {/* Duplicate images for seamless loop */}
           {[...images, ...images].map((image, index) => (
@@ -62,10 +62,11 @@ const HorizontalGallery = ({ images }: HorizontalGalleryProps) => {
                   src={image.src}
                   alt={image.alt}
                   className="hover:scale-102 transition-transform duration-300"
-                  style={{ maxWidth: '400px', height: 'auto' }}
+                  style={{ maxWidth: '300px', height: 'auto' }}
+                  className="sm:max-w-[400px]"
                 />
               </div>
-              <p className="text-sm text-gray-600 mt-3 text-left uppercase tracking-wide font-medium max-w-xs">
+              <p className="text-xs sm:text-sm text-gray-600 mt-2 sm:mt-3 text-left uppercase tracking-wide font-medium max-w-xs">
                 {image.caption}
               </p>
             </div>

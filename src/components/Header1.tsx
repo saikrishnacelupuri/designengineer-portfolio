@@ -10,7 +10,7 @@ interface Header1Props {
 
 export const Header1 = ({ isDeveloperMode = false, setIsDeveloperMode }: Header1Props) => {
   return (
-    <header className={`fixed top-4 left-1/2 transform -translate-x-1/2 z-40 w-[1000px]`}>
+    <header className={`fixed top-4 left-1/2 transform -translate-x-1/2 z-40 w-[90%] max-w-[1000px] mx-4`}>
       <div 
         className={`glass-container relative flex items-center gap-6 px-5 py-4 rounded-full backdrop-blur-xl backdrop-saturate-200 border transition-all duration-300 shadow-2xl ${
           isDeveloperMode 
@@ -39,7 +39,7 @@ export const Header1 = ({ isDeveloperMode = false, setIsDeveloperMode }: Header1
         />
         
         {/* Content wrapper to ensure content stays above glass effect */}
-        <div className="relative z-10 flex gap-6 items-center justify-between w-full">
+        <div className="relative z-10 flex gap-2 sm:gap-6 items-center justify-between w-full">
         {/* Avatar - Left side */}
         <div className="flex items-center">
           <Image
@@ -52,10 +52,10 @@ export const Header1 = ({ isDeveloperMode = false, setIsDeveloperMode }: Header1
         </div>
         
         {/* Mode Toggle - Center */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-1 sm:gap-3">
           <span 
             onClick={() => setIsDeveloperMode?.(false)}
-            className={`text-sm font-bold tracking-wider cursor-pointer transition-colors ${
+            className={`text-xs sm:text-sm font-bold tracking-wider cursor-pointer transition-colors ${
               !isDeveloperMode 
                 ? (isDeveloperMode ? 'text-white' : 'text-black') 
                 : 'text-gray-500'
@@ -66,20 +66,20 @@ export const Header1 = ({ isDeveloperMode = false, setIsDeveloperMode }: Header1
           
           <button
             onClick={() => setIsDeveloperMode?.(!isDeveloperMode)}
-            className={`relative w-16 h-8 rounded-full transition-colors duration-300 hover:cursor-pointer ${
+            className={`relative w-12 h-6 sm:w-16 sm:h-8 rounded-full transition-colors duration-300 hover:cursor-pointer ${
               isDeveloperMode ? 'bg-[#38BDF8]' : 'bg-[#12B67A]'
             }`}
           >
             <div
-              className={`absolute top-1 w-6 h-6 bg-white rounded-full transition-transform duration-300 ${
-                isDeveloperMode ? 'translate-x-8' : 'translate-x-1'
+              className={`absolute top-0.5 w-5 h-5 sm:top-1 sm:w-6 sm:h-6 bg-white rounded-full transition-transform duration-300 ${
+                isDeveloperMode ? 'translate-x-6 sm:translate-x-8' : 'translate-x-0.5 sm:translate-x-1'
               }`}
             />
           </button>
           
           <span 
             onClick={() => setIsDeveloperMode?.(true)}
-            className={`text-sm font-bold tracking-wider cursor-pointer transition-colors ${
+            className={`text-xs sm:text-sm font-bold tracking-wider cursor-pointer transition-colors ${
               isDeveloperMode 
                 ? (isDeveloperMode ? 'text-white' : 'text-black') 
                 : 'text-gray-500'
@@ -91,7 +91,7 @@ export const Header1 = ({ isDeveloperMode = false, setIsDeveloperMode }: Header1
         
         {/* Contact Button - Right side */}
         <div className="flex items-center">
-          <Button size="sm" className="bg-black text-white hover:bg-gray-800">CONTACT</Button>
+          <Button size="sm" className="bg-black text-white hover:bg-gray-800 text-xs sm:text-sm px-2 sm:px-4">CONTACT</Button>
         </div>
         </div> {/* Close content wrapper */}
       </div>

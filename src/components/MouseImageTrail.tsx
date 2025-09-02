@@ -26,17 +26,17 @@ export const MouseImageTrail = () => {
         "/NR/team2.png",
       ]}
     >
-      <section className="relative grid h-screen w-full place-content-center bg-white">
+      <section className="relative grid h-[60vh] sm:h-screen w-full place-content-center bg-white">
         <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]"></div>
         <div className="text-center">
-          <h2 className="text-4xl md:text-6xl font-bold uppercase text-black mb-4">
+          <h2 className="text-2xl sm:text-4xl md:text-6xl font-bold uppercase text-black mb-4">
             WORK & PLAY
           </h2>
-          <p className="flex items-center justify-center gap-2 text-lg font-medium text-gray-600 mb-8">
+          <p className="flex items-center justify-center gap-2 text-base sm:text-lg font-medium text-gray-600 mb-4 sm:mb-8">
             <FiMousePointer />
             <span>Move your mouse around</span>
           </p>
-          <p className="text-gray-500 max-w-md mx-auto">
+          <p className="text-sm sm:text-base text-gray-500 max-w-md mx-auto px-4">
             Behind every great design is an amazing team. These moments capture the spirit of collaboration, creativity, and friendship that drives our work.
           </p>
         </div>
@@ -143,7 +143,7 @@ const MouseImageTrailComponent: React.FC<MouseImageTrailProps> = ({
 
       {images.map((img, index) => (
         <img
-          className="pointer-events-none absolute left-0 top-0 h-48 w-auto rounded-xl border-2 border-black bg-neutral-900 object-cover opacity-0"
+          className="pointer-events-none absolute left-0 top-0 h-32 sm:h-48 w-auto rounded-xl border-2 border-black bg-neutral-900 object-cover opacity-0"
           src={img}
           alt={`Team moment ${index}`}
           key={index}

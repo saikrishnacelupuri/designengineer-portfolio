@@ -46,7 +46,7 @@ export default function Home() {
     >
       <Header1 isDeveloperMode={isDeveloperMode} setIsDeveloperMode={setIsDeveloperMode} />
       {/* Hero Section */}
-      <div className="relative flex flex-col items-center justify-center pt-[280px]"
+      <div className="relative flex flex-col items-center justify-center pt-[120px] sm:pt-[280px] px-4"
       >
 
         {/* Bg-Pattern - Designer Mode */}
@@ -111,13 +111,13 @@ export default function Home() {
 
        */}
      
-      <main className={`flex gap-[80px] items-center max-w-[1120px] ${
-        isDeveloperMode ? 'flex-row-reverse' : 'flex-row'
+      <main className={`flex flex-col lg:flex-row gap-8 lg:gap-[80px] items-center max-w-[1120px] w-full ${
+        isDeveloperMode ? 'lg:flex-row-reverse' : 'lg:flex-row'
       }`}>
        
-       <div className="relative">
+       <div className="relative flex-shrink-0">
        <Image
-   className="hover:grayscale transition-all duration-300 w-[338px] h-[500px] object-cover"
+   className="hover:grayscale transition-all duration-300 w-[280px] h-[400px] sm:w-[338px] sm:h-[500px] object-cover"
           src={isDeveloperMode ? "/dev-profile.png" : "/profile.png"}
           alt="Krishna Celupuri Profile Image"
           width={338}
@@ -126,30 +126,30 @@ export default function Home() {
         />
         
         {/* Circular Text Overlay */}
-        <div className="absolute bottom-4 right-4">
+        <div className="absolute bottom-2 right-2 sm:bottom-4 sm:right-4">
           <CircularText 
             text="| KRISHNA | CELUPURI "
-            radius={80}
-            fontSize={20}
+            radius={60}
+            fontSize={16}
             animate={true}
-            className="text-white opacity-80"
+            className="text-white opacity-80 sm:radius-80 sm:fontSize-20"
           />
         </div>
         </div>  {/* Image */}
 
 
 
-<div className="flex sm:flex-col gap-8 max-w-[600px]">
+<div className="flex flex-col gap-8 max-w-[600px] w-full text-center lg:text-left">
 
 {/* Heading + Description */}
-<h1 className="text-[42px] leading-[62px] uppercase">
+<h1 className="text-[28px] sm:text-[36px] lg:text-[42px] leading-[1.3] sm:leading-[1.4] lg:leading-[62px] uppercase">
   {isDeveloperMode ? (
     <>DESIGN ENGINEER<br/>WHO CAN DESIGN<br/><span className="text-[#8C8C8C]">BASED IN LONDON, UK</span></>
   ) : (
     <>PRODUCT DESIGNER<br/>WITH 8 YRS OF EXP.<br/><span className="text-[#8C8C8C]">BASED IN LONDON, UK</span></>
   )}
 </h1>
-        <ol className="font-mono list-inside list-[square] text-lg text-center sm:text-left">
+        <ol className="font-mono list-inside list-[square] text-sm sm:text-base lg:text-lg">
           <li className="mb-2 tracking-[-.01em]">
           {isDeveloperMode ? (
             "I'm a Design Engineer who bridges the gap between design and code."
@@ -167,7 +167,7 @@ export default function Home() {
         </ol>
 
 {/* Buttons */}
-        <div className="flex gap-4 mt-8 items-center flex-col sm:flex-row">
+        <div className="flex gap-4 mt-8 items-center flex-col sm:flex-row justify-center lg:justify-start">
           {isDeveloperMode ? (
             <>
               <button
@@ -222,11 +222,11 @@ export default function Home() {
 
       {/* BLACK BG NUROLEWorks Section */}
       {!isDeveloperMode && (
-        <section className="w-full bg-black text-white py-[120px] ">
-          <div className="max-w-[1000px] mx-auto">
+        <section className="w-full bg-black text-white py-[60px] sm:py-[120px]">
+          <div className="max-w-[1000px] mx-auto px-4">
             
            {/* First Row - Header + Hero Image (50/50) */}
-            <div className="grid grid-cols-2 gap-16 mb-16">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 mb-8 lg:mb-16">
               {/* Left - Heading & Hero Image */}
               <div>
                 <p className="text-gray-400 text-sm mb-4">{/* 2020 — PRESENT */}</p>
@@ -283,9 +283,9 @@ export default function Home() {
               </article>
 
                {/* Third and Fourth Projects - Side by Side */}
-               <div className="flex gap-8">
-                <article className="w-[50%]">
-                  <div className="relative h-[300px]">
+               <div className="flex flex-col lg:flex-row gap-8">
+                <article className="w-full lg:w-[50%]">
+                  <div className="relative h-[200px] sm:h-[300px]">
                     <Image
                       src="/work-designer/Candidate-Assessment-Internal-View.png.png"
                       alt="GUEST CHECKOUT"
@@ -303,8 +303,8 @@ export default function Home() {
                   </div>
                 </article>
 
-                <article className="w-[50%]">
-                  <div className="relative h-[300px]">
+                <article className="w-full lg:w-[50%]">
+                  <div className="relative h-[200px] sm:h-[300px]">
                     <Image
                       src="/work-designer/share-on-public-roles.png.png"
                       alt="INTERNAL ASSESSMENT VIEW"
@@ -330,15 +330,15 @@ export default function Home() {
 
  {/* PAPERTRAIL Section */}
  {!isDeveloperMode && (
-        <section className="w-full bg-white pt-[120px] pb-[120px]">
+        <section className="w-full bg-white pt-[60px] pb-[60px] sm:pt-[120px] sm:pb-[120px]">
           
-          <div className="max-w-[1000px] mx-auto">
+          <div className="max-w-[1000px] mx-auto px-4">
       
       
 
 
   {/* First Row - Header + Hero Image (50/50) */}
-  <div className="grid grid-cols-2 gap-16 mb-16">
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 mb-8 lg:mb-16">
               {/* Left - Heading & Hero Image */}
               <div>
                 <p className="text-gray-400 text-sm mb-4">{/* 2020 — 2022 */}</p>
@@ -384,9 +384,9 @@ export default function Home() {
           
 
               {/* Third and Fourth Projects - Side by Side */}
-              <div className="flex gap-8">
-                <article className="w-[50%]">
-                  <div className="relative h-[300px]">
+              <div className="flex flex-col lg:flex-row gap-8">
+                <article className="w-full lg:w-[50%]">
+                  <div className="relative h-[200px] sm:h-[300px]">
                     <Image
                       src="/papertrial/p-card1.png"
                       alt="GUEST CHECKOUT"
@@ -407,8 +407,8 @@ visual language
                   </div>
                 </article>
 
-                <article className="w-[50%]">
-                  <div className="relative h-[300px]">
+                <article className="w-full lg:w-[50%]">
+                  <div className="relative h-[200px] sm:h-[300px]">
                     <Image
                       src="/papertrial/p-card2.png"
                       alt="INTERNAL ASSESSMENT VIEW"
@@ -440,15 +440,15 @@ visual language
 
       {/* FLUJO Section */}
       {!isDeveloperMode && (
-        <section className="w-full bg-[#F4F2EC] pt-[120px] pb-[60px]">
-          <div className="max-w-[1000px] mx-auto ">
+        <section className="w-full bg-[#F4F2EC] pt-[60px] pb-[30px] sm:pt-[120px] sm:pb-[60px]">
+          <div className="max-w-[1000px] mx-auto px-4">
 
 
          
 
 
          {/* First Row - Header + Hero Image (50/50) */}
-                 <div className="grid grid-cols-2 gap-16 mb-8">
+                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 mb-8">
               {/* Left - Heading & Hero Image */}
               <div>
                 <p className="text-gray-400 text-sm mb-4">{/* 2020 — PRESENT */}</p>
@@ -500,7 +500,7 @@ developers.
             </div>
 
    {/* AKIFLOW */}
-   <div className="grid grid-cols-2 gap-16 mb-8 pt-12 border-t-2 border-[#DFDCD6]">
+   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 mb-8 pt-12 border-t-2 border-[#DFDCD6]">
               {/* Left - Heading & Hero Image */}
               <div>
                 <p className="text-purple-600 text-sm mb-4">https://akiflow.com/</p>
@@ -525,7 +525,7 @@ developers.
 
 
                {/* HDB*/}
-   <div className="grid grid-cols-2 gap-16 mb-8 pt-12 border-t-2 border-[#DFDCD6]">
+   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 mb-8 pt-12 border-t-2 border-[#DFDCD6]">
               {/* Left - Heading & Hero Image */}
               <div>
                 <p className="text-gray-400 text-sm mb-4">{/* 2020 - ( 6 Months ) _ */}</p>
@@ -602,9 +602,9 @@ DEVELOPMENT. 
       {!isDeveloperMode && <MouseImageTrail />}
          {/* Sketching Section */}
          {!isDeveloperMode && (
-      <section className="w-full bg-[#F4F2EC] py-24">
-        <div className="max-w-[1000px] mx-auto text-left">
-          <h2 className="text-4xl font-bold mb-4 leading-6">
+      <section className="w-full bg-[#F4F2EC] py-12 sm:py-24">
+        <div className="max-w-[1000px] mx-auto text-left px-4">
+          <h2 className="text-2xl sm:text-4xl font-bold mb-4 leading-tight">
           
             🎨🌿<br/>
             SPOT SKETCHES!<br/>
