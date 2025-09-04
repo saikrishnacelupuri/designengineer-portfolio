@@ -10,7 +10,7 @@ interface Header1Props {
 
 export const Header1 = ({ isDeveloperMode = false, setIsDeveloperMode }: Header1Props) => {
   return (
-    <header className={`fixed top-4 left-1/2 transform -translate-x-1/2 z-40 w-[90%] max-w-[1000px] mx-4`}>
+    <header className={`fixed top-4 left-1/2 transform -translate-x-1/2 z-40 w-[90%] max-w-[1000px]`}>
       <div 
         className={`glass-container relative flex items-center gap-6 px-5 py-4 rounded-full backdrop-blur-xl backdrop-saturate-200 border transition-all duration-300 shadow-2xl ${
           isDeveloperMode 
@@ -91,7 +91,9 @@ export const Header1 = ({ isDeveloperMode = false, setIsDeveloperMode }: Header1
         
         {/* Contact Button - Right side */}
         <div className="flex items-center">
-          <Button size="sm" className="bg-black text-white hover:bg-gray-800 text-xs sm:text-sm px-2 sm:px-4">CONTACT</Button>
+          <a href="mailto:krishnacelupuri@gmail.com">
+            <Button size="sm" className="bg-black text-white hover:bg-gray-800 hover:cursor-pointer text-xs sm:text-sm px-2 sm:px-4">CONTACT</Button>
+          </a>
         </div>
         </div> {/* Close content wrapper */}
       </div>

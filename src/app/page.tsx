@@ -8,7 +8,7 @@ import CircularText from "../components/CircularText";
 import HorizontalGallery from "../components/HorizontalGallery";
 import DeveloperTimeline from "../components/DeveloperTimeline";
 import { Header1 } from "../components/Header1";
-import { Case2 } from "../components/Case2";
+import { Case2Wrapper } from "../components/Case2Wrapper";
 import { Footer1 } from "../components/Footer1";
 import { MouseImageTrail } from "../components/MouseImageTrail";
 
@@ -43,6 +43,9 @@ export default function Home() {
         isDeveloperMode ? 'bg-black text-white' : 'bg-white text-black'
       }`}
     >
+      {isDeveloperMode && (
+        <div className="fixed inset-0 -z-10 h-full w-full [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]"></div>
+      )}
       <Header1 isDeveloperMode={isDeveloperMode} setIsDeveloperMode={setIsDeveloperMode} />
       {/* Hero Section */}
       <div className="relative flex flex-col items-center justify-center pt-[120px] sm:pt-[280px] px-4"
@@ -110,7 +113,7 @@ export default function Home() {
 
        */}
      
-      <main className={`flex flex-col lg:flex-row gap-8 lg:gap-[80px] items-center max-w-[1120px] w-full ${
+      <main className={`flex flex-col lg:flex-row gap-8 lg:gap-[80px] items-center max-w-[1000px] w-full ${
         isDeveloperMode ? 'lg:flex-row-reverse' : 'lg:flex-row'
       }`}>
        
@@ -143,9 +146,9 @@ export default function Home() {
 {/* Heading + Description */}
 <h1 className="text-[28px] sm:text-[36px] lg:text-[42px] leading-[1.3] sm:leading-[1.4] lg:leading-[62px] uppercase">
   {isDeveloperMode ? (
-    <>DESIGN ENGINEER<br/>WHO CAN DESIGN<br/><span className="text-[#8C8C8C]">BASED IN LONDON, UK</span></>
+    <>FRONT-END DEVELOPER<br/>WHO CAN DESIGN<br/><span className="text-[#8C8C8C]">BASED IN LONDON, UK</span></>
   ) : (
-    <>PRODUCT DESIGNER<br/>WITH 8 YRS OF EXP.<br/><span className="text-[#8C8C8C]">BASED IN LONDON, UK</span></>
+    <>KRISHNA CELUPURI ツ<br/>PRODUCT DESIGNER<br/><span className="text-[#8C8C8C]">BASED IN LONDON, UK</span></>
   )}
 </h1>
         <ol className="font-mono list-inside list-[square] text-sm sm:text-base lg:text-lg">
@@ -178,30 +181,30 @@ export default function Home() {
                   alt="GitHub"
                   width={24}
                   height={24}
-                  className="invert"
+                  className="invert hover:cursor-pointer"
                 />
-                View Github
+                GITHUB
               </button>
               <button
                 onClick={() => window.open("https://www.linkedin.com/in/krishnacelupuri/", "_blank")}
-                className="rounded-full border border-solid border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#1a1a1a] hover:border-transparent text-white font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
+                className="rounded-full border border-solid border-white/[.145] transition-colors flex items-center justify-center hover:cursor-pointer hover:bg-[#1a1a1a] hover:border-transparent hover:scale-105 text-white font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
               >
-                LinkedIn
+                LINKEDIN
               </button>
             </>
           ) : (
             <>
               <button
                 onClick={() => window.open("https://drive.google.com/file/d/1UlQuVnD0AhRsBaA_ATsA2u3BYRaeLsyJ/view?usp=sharing", "_blank")}
-                className="uppercase rounded-full border hover:cursor-pointer border-solid border-transparent transition-colors flex items-center justify-center bg-black text-white gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
+                className="uppercase rounded-full border hover:cursor-pointer border-solid border-transparent transition-colors flex items-center justify-center bg-black text-white gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full"
               >
-                Download CV
+                DOWNLOAD CV
               </button>
               <button
-                onClick={() => window.open("https://docs.google.com/document/d/1SSqxOdNWfzTR6b0OK4sHTcve3Z0F4-86vTBsgn0coF4/edit?usp=sharing", "_blank")}
-                className="uppercase rounded-full border-1 border-solid border-black dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
+                onClick={() => window.open("https://linkedin.com/in/krishnacelupuri/", "_blank")}
+                className="uppercase rounded-full border-1 border-solid border-black dark:border-white/[.145] transition-colors flex items-center justify-center hover:cursor-pointer hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full"
               >
-                LinkedIn
+                LINKEDIN
               </button>
             </>
           )}
@@ -215,11 +218,11 @@ export default function Home() {
       </div>
 
       {/* Case2 - Trusted by market leaders */}
-      {!isDeveloperMode && <Case2 />}
+      {!isDeveloperMode && <Case2Wrapper />}
 
 
 
-      {/* BLACK BG NUROLEWorks Section */}
+      {/* NUROLE Works Section */}
       {!isDeveloperMode && (
         <section className="w-full bg-black text-white py-[60px] sm:py-[120px]">
           <div className="max-w-[1000px] mx-auto px-4">
@@ -228,9 +231,11 @@ export default function Home() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 mb-8 lg:mb-16">
               {/* Left - Heading & Hero Image */}
               <div>
-                <p className="text-gray-400 text-sm mb-4">{/* 2020 — PRESENT */}</p>
+                <p className="text-white font-semibold text-sm mb-4">{/* 2020 — PRESENT */}</p>
                 <h2 className="text-2xl font-bold mb-8 leading-tight">
-                  NUROLE.COM
+                  <a href="https://www.nurole.com" target="_blank" rel="noopener noreferrer" className="text-white hover:underline">
+                    NUROLE.COM
+                  </a>
                 </h2>
                 <div className="relative h-[300px] rounded-lg overflow-hidden">
                   <Image
@@ -246,17 +251,15 @@ export default function Home() {
 
               {/* Right - Description */}
               <div className="flex flex-col justify-center">
-                <p className="text-[#929292] text-sm mb-4">🌱 2ND PRODUCT DESIGNER</p>
+                <p className="text-[#929292] text-sm mb-4"> SENIOR PRODUCT DESIGNER</p>
                 <p className="text-[#929292] text-md leading-relaxed mb-8">
-                  LEAD THE PRODUCT DESIGN AND RESEARCH, WORKED CLOSELY WITH HEAD OF PRODUCT TO INFLUENCE 
-                  THE FEATURE ROADMAP AND PROTOTYPED NEW FEATURE PROPOSALS ON GRAY-LABELING PAPERTRAIL&apos;S PRODUCT 
-                  OFFERINGS TO ENTERPRISE CUSTOMERS AND UPSELLING OPPORTUNITIES :
+                As the sole designer at Nurole, I established the Nurole design foundations while leading end-to-end product design across multiple squads. My work focused on shipping 0→1 products, driving measurable business impact, and embedding data-driven design practices.
+
                 </p>
-                <ul className="space-y-3 text-white">
-                  <li>• REDESIGNED ONBOARDING FLOW AND INCREASED THE TRIAL TO ACTIVE CONVERSION BY 28%</li>
-                  <li>• CREATED A DESIGN SYSTEM FROM 0→1</li>
-                  <li>• INTRODUCED NEW CARD LAYOUT FOR ACCOUNTS & SUBSCRIPTION MANAGEMENT RESULTING IN MORE 
-                      THAN 1.5% OF USERS CREATING MULTIPLE ACCOUNTS WITHIN A SUBSCRIPTION.</li>
+                <ul className="space-y-3 text-white list-inside list-[square]">
+                  <li>Built Nurole’s design system from scratch and led 0→1 design of the Matching App and Hub, cutting operational hours and improving workflow efficiency.</li>
+                  <li>Owned Mixpanel tracking and analytics dashboards, while using React.js + TailwindCSS to prototype interactive flows that accelerated delivery.</li>
+             
                 </ul>
               </div>
             </div>
@@ -275,7 +278,7 @@ export default function Home() {
                   <h3 className="text-2xl font-bold text-white mb-2 leading-[48px]">
                     MATCHING APP : (0→1) INTERNAL APPLICATION TO EFFECTIVELY SOURCE & TARGET CANDIDATES FOR ROLES.
                   </h3>
-                  <p className="text-sm text-gray-600 mb-6">
+                  <p className="text-sm text-gray-200 mb-6">
                    ✻ 0 TO 1 / DATA-DASHBOARD / MATCHING ALGORITHM
                   </p>
                 </div>
@@ -294,9 +297,10 @@ export default function Home() {
                   </div>
                   <div className="p-6">
                     <h3 className="text-xl font-bold text-white mb-2 leading-10">
-                      GUEST CHECKOUT : ALLOWING NON-MEMBERS TO APPLY ROLES
+                    INTERNAL ASSESSMENT VIEW IN CANDIDATE ASSESSMENT TOOLING
+
                     </h3>
-                    <p className="text-sm text-gray-600 mb-4">
+                    <p className="text-sm text-gray-200 mb-4">
                       NEW FEATURE / USER RESEARCH
                     </p>
                   </div>
@@ -313,9 +317,10 @@ export default function Home() {
                   </div>
                   <div className="p-6">
                     <h3 className="text-xl font-bold leading-10 text-white mb-2">
-                      INTERNAL ASSESSMENT VIEW IN CANDIDATE ASSESSMENT TOOLING
+                    GUEST CHECKOUT : ALLOWING NON-MEMBERS TO APPLY ROLES
+
                     </h3>
-                    <p className="text-sm text-gray-600 mb-4">
+                    <p className="text-sm text-gray-200 mb-4">
                       SAAS / DISCOVERY / DATA
                     </p>
                   </div>
@@ -342,7 +347,9 @@ export default function Home() {
               <div>
                 <p className="text-gray-400 text-sm mb-4">{/* 2020 — 2022 */}</p>
                 <h2 className="text-2xl font-bold mb-8 leading-tight">
-                  PAPERTRAIL.IO
+                  <a href="https://www.papertrail.io/" target="_blank" rel="noopener noreferrer" className="text-black hover:underline">
+                    PAPERTRAIL.IO
+                  </a>
                 </h2>
                 <div className="relative h-[300px] rounded-lg overflow-hidden">
                   <Image
@@ -361,10 +368,9 @@ export default function Home() {
                 <p className="text-gray-800 text-sm mb-4">🌱 2ND PRODUCT DESIGNER</p>
                 <p className="text-gray-800 text-md leading-relaxed mb-8">
                   LEAD THE PRODUCT DESIGN AND RESEARCH, WORKED CLOSELY WITH HEAD OF PRODUCT TO INFLUENCE 
-                  THE FEATURE ROADMAP AND PROTOTYPED NEW FEATURE PROPOSALS ON GRAY-LABELING PAPERTRAIL&apos;S PRODUCT 
-                  OFFERINGS TO ENTERPRISE CUSTOMERS AND UPSELLING OPPORTUNITIES :
+                  THE FEATURE ROADMAP AND PROTOTYPED NEW FEATURE PROPOSALS.
                 </p>
-                <ul className="space-y-3 text-gray-800">
+                <ul className="space-y-3 text-gray-800 list-inside list-[square]">
                   <li>• REDESIGNED ONBOARDING FLOW AND INCREASED THE TRIAL TO ACTIVE CONVERSION BY 28%</li>
                   <li>• CREATED A DESIGN SYSTEM FROM 0→1</li>
                   <li>• INTRODUCED NEW CARD LAYOUT FOR ACCOUNTS & SUBSCRIPTION MANAGEMENT RESULTING IN MORE 
@@ -395,10 +401,8 @@ export default function Home() {
                   </div>
                   <div className="p-6">
                     <h3 className="text-xl font-bold text-black mb-2 leading-10">
-                    Created Shield a design
-system which Unified design
-system for Papertrail&apos;s
-visual language
+  SHIELD DESIGN SYSTEM ( 0 to 1) :
+  <br/> UNIFIED DESIGN LANGUAGE
                     </h3>
                     <p className="text-sm text-gray-600 mb-4">
                     0 to 1 / DESIGN SYSTEM / DOCUMENTATION
@@ -417,8 +421,7 @@ visual language
                   </div>
                   <div className="p-6">
                     <h3 className="text-xl font-bold leading-10 text-black mb-2">
-                    Redesign core journeys to align with new
-                    account and template offerings.
+                   CUSTOMER APP : ONBOARDING REDESIGN.
                     </h3>
                     <p className="text-sm text-gray-600 mb-4">
                     REDESIGN /  SAAS / INSPECTION MANAGEMENT TOOL
@@ -451,6 +454,7 @@ visual language
               {/* Left - Heading & Hero Image */}
               <div>
                 <p className="text-gray-400 text-sm mb-4">{/* 2020 — PRESENT */}</p>
+                <p className="text-purple-600 text-sm mb-4">https://flujo.io/</p>
                 <h2 className="text-2xl font-bold mb-8 leading-tight">
                   FLUJO.IO
                 </h2>
@@ -459,7 +463,7 @@ visual language
 
               {/* Right - Description */}
               <div className="flex flex-col justify-center">
-                <p className="text-gray-800 text-sm mb-4">🌱 2ND PRODUCT DESIGNER</p>
+                <p className="text-gray-800 text-sm mb-4">🌱 FOUNDING DESIGNER</p>
                 <p className="text-gray-800 text-md leading-relaxed mb-8">
                 Founding designer driving Saas product design,
 creating comprehensive design system. Designed web
@@ -503,20 +507,21 @@ developers.
               {/* Left - Heading & Hero Image */}
               <div>
                 <p className="text-purple-600 text-sm mb-4">https://akiflow.com/</p>
-                <h2 className="text-2xl font-bold mb-8 leading-tight">
-                AKIFLOW. ( YC-S20 )
+                <h2 className="text-2xl font-bold mb-8 leading-tight flex items-center gap-3">
+                AKIFLOW. ( YC-S20 ) <span><Image src="/yc.png" alt="Y Combinator" width={40} height={40} className="rounded-md" /></span>
                 </h2>
              
               </div>
 
               {/* Right - Description */}
               <div className="flex flex-col justify-center">
-                <p className="text-gray-800 text-sm mb-4">🌱 2ND PRODUCT DESIGNER</p>
+                <p className="text-gray-800 text-sm mb-4"> PRODUCT DESIGNER</p>
                 <p className="text-gray-800 text-md leading-relaxed mb-8">
-                Founding designer driving Saas product design,
-creating comprehensive design system. Designed web
-and mobile experiences, collaborating closely with
-developers.
+                I WAS WORKING WITH AKIFLOW DURING MY MASTERS IN
+MILAN, ITALY. I WAS CLOSELY WORKING WITH FOUNDING
+DESIGNER IN CREATING & MAINTAINING DESIGN COMPONENTS
+& ASSETS. DURING MY TIME I WORKING ON THE SETTINGS &
+ACCOUNT MANAGEMENT FEATURE SETS.
                 </p>
               
               </div>
@@ -529,7 +534,9 @@ developers.
               <div>
                 <p className="text-gray-400 text-sm mb-4">{/* 2020 - ( 6 Months ) _ */}</p>
                 <h2 className="text-2xl font-bold mb-8 leading-[40px]">
-                HDB ON THE GO <br/>[ 5M + DOWNLOADS ]
+                <a href="https://tinyurl.com/4yhe7cbp" target="_blank" rel="noopener noreferrer" className="text-black hover:underline">
+                  HDB ON THE GO <br/>[ 5M + DOWNLOADS ]
+                </a>
                 </h2>
              
               </div>
@@ -598,7 +605,7 @@ DEVELOPMENT. 
    
 
       {/* Mouse Image Trail Section */}
-      {!isDeveloperMode && <MouseImageTrail />}
+      {!isDeveloperMode && <MouseImageTrail />} 
          {/* Sketching Section */}
          {!isDeveloperMode && (
       <section className="w-full bg-[#F4F2EC] py-12 sm:py-24">
@@ -606,8 +613,8 @@ DEVELOPMENT. 
           <h2 className="text-2xl sm:text-4xl font-bold mb-4 leading-tight">
           
             🎨🌿<br/>
-            SPOT SKETCHES!<br/>
-            <span className="text-sm font-normal lowercase">on the spot</span>
+            ✐ SPOT ON SKETCHES!<br/>
+            <span className="text-sm font-normal lowercase">ON THE SPOT</span>
           </h2>
           <p className="text-gray-600 text-md max-w-2xl mx-auto mb-16 leading-relaxed">
             These sketches were created in parks<br/>

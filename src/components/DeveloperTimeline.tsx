@@ -55,7 +55,7 @@ const projects = [
     tags: ["Next.js", "React", "TailwindCSS", "GSAP", "Framer Motion", "Vercel"],
     date: "2024",
     type: "project",
-    image: "/work-designer/Works section design.png",
+    image: "/krishnacelupuri.com - opengraph.png",
     buttonText: "VIEW SOURCE CODE",
     buttonUrl: "https://github.com/saikrishnacelupuri/designengineer-portfolio"
   }
@@ -208,15 +208,23 @@ export default function DeveloperTimeline() {
                       loading="lazy"
                     />
                   </div>
+                ) : project.id === 2 ? (
+                  <div className="relative h-[640px] rounded-xl overflow-hidden bg-gray-800/50 border border-gray-800">
+                    <iframe
+                      src="https://tier2-sponsors-uk.vercel.app/"
+                      className="w-full h-full border-0"
+                      title="Tier2 Sponsors UK Website"
+                      loading="lazy"
+                    />
+                  </div>
                 ) : (
                   <div className="relative h-[640px] rounded-xl overflow-hidden bg-gray-800/50 border border-gray-800">
                     <Image
                       src={project.image}
                       alt={project.title}
                       fill
-                      className="object-cover opacity-70 hover:opacity-90 transition-opacity duration-300"
+                      className="object-cover transition-opacity duration-300"
                     />
-                    <div className="absolute inset-0 bg-black/10"></div>
                   </div>
                 )}
               </div>
