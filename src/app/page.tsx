@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Lenis from "lenis";
 import "lenis/dist/lenis.css";
 import CircularText from "../components/CircularText";
+import { useLettersSlideUp } from "../hooks/useLettersSlideUp";
 
 import HorizontalGallery from "../components/HorizontalGallery";
 import DeveloperTimeline from "../components/DeveloperTimeline";
@@ -14,6 +15,20 @@ import { MouseImageTrail } from "../components/MouseImageTrail";
 
 export default function Home() {
   const [isDeveloperMode, setIsDeveloperMode] = useState(false);
+  
+  // Letters slide up animation refs for work titles
+  const nuroleRef = useLettersSlideUp();
+  const matchingAppRef = useLettersSlideUp();
+  const assessmentRef = useLettersSlideUp();
+  const guestCheckoutRef = useLettersSlideUp();
+  const papertrailRef = useLettersSlideUp();
+  const shieldRef = useLettersSlideUp();
+  const onboardingRef = useLettersSlideUp();
+  const flujoRef = useLettersSlideUp();
+  const flujoDescRef = useLettersSlideUp();
+  const akiflowRef = useLettersSlideUp();
+  const hdbRef = useLettersSlideUp();
+  const hdbDescRef = useLettersSlideUp();
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -130,7 +145,7 @@ export default function Home() {
         {/* Circular Text Overlay */}
         <div className="absolute bottom-2 right-2 sm:bottom-4 sm:right-4">
           <CircularText 
-            text="| KRISHNA | CELUPURI "
+            text="✻ KRISHNA ✻ CELUPURI "
             radius={60}
             fontSize={16}
             animate={true}
@@ -144,7 +159,7 @@ export default function Home() {
 <div className="flex flex-col gap-8 max-w-[600px] w-full text-center lg:text-left">
 
 {/* Heading + Description */}
-<h1 className="text-[28px] sm:text-[36px] lg:text-[42px] leading-[1.3] sm:leading-[1.4] lg:leading-[62px] uppercase">
+<h1 className="text-[28px] sm:text-[36px] lg:text-[42px] leading-[1.3] sm:leading-[1.4] lg:leading-[62px]">
   {isDeveloperMode ? (
     <>FRONT-END DEVELOPER<br/>WHO CAN DESIGN<br/><span className="text-[#8C8C8C]">BASED IN LONDON, UK</span></>
   ) : (
@@ -152,20 +167,30 @@ export default function Home() {
   )}
 </h1>
         <ol className="font-mono list-inside list-[square] text-sm sm:text-base lg:text-lg">
-          <li className="mb-2 tracking-[-.01em]">
           {isDeveloperMode ? (
-            "I'm a Design Engineer who bridges the gap between design and code."
+            <>
+              <li className="mb-2 tracking-[-.01em]">
+                I'm a Design Engineer who bridges the gap between design and code.
+              </li>
+              <li className="tracking-[-.01em]">
+                I prototype, build, and ship polished interfaces with React, TypeScript, and Tailwind. My focus is on design systems, motion, and AI-driven workflows that feel as good as they look.
+              </li>
+            </>
           ) : (
-            "SENIOR PRODUCT DESIGNER WITH 8 YRS OF EXP. Based in London,UK 🇬🇧"
+            <>
+               <li className="mb-2 tracking-[-.01em]">
+                Designer who can code and bring ideas live.
+              </li>
+              <li className="mb-2 tracking-[-.01em]">
+                Senior Product Designer with 8+ years experience
+              </li>
+           
+              <li className="mb-2 tracking-[-.01em]">
+                Specialized in scaling ideas from 0→1
+              </li>
+           
+            </>
           )}
-          </li>
-          <li className="tracking-[-.01em]">
-          {isDeveloperMode ? (
-            "I prototype, build, and ship polished interfaces with React, TypeScript, and Tailwind. My focus is on design systems, motion, and AI-driven workflows that feel as good as they look."
-          ) : (
-            "A SENIOR DESIGNER WHO CAN READ & WRITE CODE SPECIALISED IN WORKING WITH SMALL & EARLY STAGE TEAMS, WORKED WITH 10+ STARTUPS & SCALEUPS FROM INDIA, ITALY, USA & UK."
-          )}
-          </li>
         </ol>
 
 {/* Buttons */}
@@ -183,13 +208,13 @@ export default function Home() {
                   height={24}
                   className="invert hover:cursor-pointer"
                 />
-                GITHUB
+                GitHub
               </button>
               <button
                 onClick={() => window.open("https://www.linkedin.com/in/krishnacelupuri/", "_blank")}
                 className="rounded-full border border-solid border-white/[.145] transition-colors flex items-center justify-center hover:cursor-pointer hover:bg-[#1a1a1a] hover:border-transparent hover:scale-105 text-white font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
               >
-                LINKEDIN
+                LinkedIn
               </button>
             </>
           ) : (
@@ -198,13 +223,13 @@ export default function Home() {
                 onClick={() => window.open("https://drive.google.com/file/d/1UlQuVnD0AhRsBaA_ATsA2u3BYRaeLsyJ/view?usp=sharing", "_blank")}
                 className="uppercase rounded-full border hover:cursor-pointer border-solid border-transparent transition-colors flex items-center justify-center bg-black text-white gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full"
               >
-                DOWNLOAD CV
+                Download CV
               </button>
               <button
                 onClick={() => window.open("https://linkedin.com/in/krishnacelupuri/", "_blank")}
                 className="uppercase rounded-full border-1 border-solid border-black dark:border-white/[.145] transition-colors flex items-center justify-center hover:cursor-pointer hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full"
               >
-                LINKEDIN
+                LinkedIn
               </button>
             </>
           )}
@@ -232,7 +257,7 @@ export default function Home() {
               {/* Left - Heading & Hero Image */}
               <div>
                 <p className="text-white font-semibold text-sm mb-4">{/* 2020 — PRESENT */}</p>
-                <h2 className="text-2xl font-bold mb-8 leading-tight">
+                <h2 ref={nuroleRef} className="text-2xl font-bold mb-8 leading-tight">
                   <a href="https://www.nurole.com" target="_blank" rel="noopener noreferrer" className="text-white hover:underline">
                     NUROLE.COM
                   </a>
@@ -251,15 +276,15 @@ export default function Home() {
 
               {/* Right - Description */}
               <div className="flex flex-col justify-center">
-                <p className="text-[#929292] text-sm mb-4"> SENIOR PRODUCT DESIGNER</p>
+                <p className="text-[#929292] text-sm mb-4">Senior Product Designer</p>
                 <p className="text-[#929292] text-md leading-relaxed mb-8">
-                As the sole designer at Nurole, I established the Nurole design foundations while leading end-to-end product design across multiple squads. My work focused on shipping 0→1 products, driving measurable business impact, and embedding data-driven design practices.
-
+                As sole designer at Nurole, I built the design foundations, led 0→1 products, and embedded data-driven design practices that drove measurable impact.
                 </p>
                 <ul className="space-y-3 text-white list-inside list-[square]">
-                  <li>Built Nurole’s design system from scratch and led 0→1 design of the Matching App and Hub, cutting operational hours and improving workflow efficiency.</li>
-                  <li>Owned Mixpanel tracking and analytics dashboards, while using React.js + TailwindCSS to prototype interactive flows that accelerated delivery.</li>
-             
+                  <li>Led 0→1 design of Matching App & Hub, cutting ops hours</li>
+                  <li>Improved workflow efficiency with data-driven practices</li>
+                <li>Created Product lab in code (React, Tailwindcss) for faster prototyping environment in github</li>
+            
                 </ul>
               </div>
             </div>
@@ -275,11 +300,11 @@ export default function Home() {
                   />
                 </div>
                 <div className="p-8">
-                  <h3 className="text-2xl font-bold text-white mb-2 leading-[48px]">
-                    MATCHING APP : (0→1) INTERNAL APPLICATION TO EFFECTIVELY SOURCE & TARGET CANDIDATES FOR ROLES.
+                  <h3 ref={matchingAppRef} className="text-2xl font-bold text-white mb-2 leading-[48px]">
+                    MATCHING APP: 0→1 INTERNAL APPLICATION TO SOURCE & TARGET CANDIDATES FOR ROLES
                   </h3>
                   <p className="text-sm text-gray-200 mb-6">
-                   ✻ 0 TO 1 / DATA-DASHBOARD / MATCHING ALGORITHM
+                   ✻ 0 to 1 / Data Dashboard / Matching Algorithm
                   </p>
                 </div>
               </article>
@@ -296,12 +321,11 @@ export default function Home() {
                     />
                   </div>
                   <div className="p-6">
-                    <h3 className="text-xl font-bold text-white mb-2 leading-10">
+                    <h3 ref={assessmentRef} className="text-xl font-bold text-white mb-2 leading-10">
                     INTERNAL ASSESSMENT VIEW IN CANDIDATE ASSESSMENT TOOLING
-
                     </h3>
                     <p className="text-sm text-gray-200 mb-4">
-                      NEW FEATURE / USER RESEARCH
+                      New Feature / User Research
                     </p>
                   </div>
                 </article>
@@ -316,12 +340,11 @@ export default function Home() {
                     />
                   </div>
                   <div className="p-6">
-                    <h3 className="text-xl font-bold leading-10 text-white mb-2">
-                    GUEST CHECKOUT : ALLOWING NON-MEMBERS TO APPLY ROLES
-
+                    <h3 ref={guestCheckoutRef} className="text-xl font-bold leading-10 text-white mb-2">
+                    GUEST CHECKOUT: ALLOWING NON-MEMBERS TO APPLY FOR ROLES
                     </h3>
                     <p className="text-sm text-gray-200 mb-4">
-                      SAAS / DISCOVERY / DATA
+                      SaaS / Discovery / Data
                     </p>
                   </div>
                 </article>
@@ -346,7 +369,7 @@ export default function Home() {
               {/* Left - Heading & Hero Image */}
               <div>
                 <p className="text-gray-400 text-sm mb-4">{/* 2020 — 2022 */}</p>
-                <h2 className="text-2xl font-bold mb-8 leading-tight">
+                <h2 ref={papertrailRef} className="text-2xl font-bold mb-8 leading-tight">
                   <a href="https://www.papertrail.io/" target="_blank" rel="noopener noreferrer" className="text-black hover:underline">
                     PAPERTRAIL.IO
                   </a>
@@ -365,16 +388,14 @@ export default function Home() {
 
               {/* Right - Description */}
               <div className="flex flex-col justify-center bg-[#F4F2EC] p-8 rounded-2xl rotate-3 hover:rotate-2 hover:cursor-pointer">
-                <p className="text-gray-800 text-sm mb-4">🌱 2ND PRODUCT DESIGNER</p>
+                <p className="text-gray-800 text-sm mb-4">🌱 2nd Product Designer</p>
                 <p className="text-gray-800 text-md leading-relaxed mb-8">
-                  LEAD THE PRODUCT DESIGN AND RESEARCH, WORKED CLOSELY WITH HEAD OF PRODUCT TO INFLUENCE 
-                  THE FEATURE ROADMAP AND PROTOTYPED NEW FEATURE PROPOSALS.
+                  Led product design and research, working closely with Head of Product to influence feature roadmap and prototype new proposals.
                 </p>
                 <ul className="space-y-3 text-gray-800 list-inside list-[square]">
-                  <li>• REDESIGNED ONBOARDING FLOW AND INCREASED THE TRIAL TO ACTIVE CONVERSION BY 28%</li>
-                  <li>• CREATED A DESIGN SYSTEM FROM 0→1</li>
-                  <li>• INTRODUCED NEW CARD LAYOUT FOR ACCOUNTS & SUBSCRIPTION MANAGEMENT RESULTING IN MORE 
-                      THAN 1.5% OF USERS CREATING MULTIPLE ACCOUNTS WITHIN A SUBSCRIPTION.</li>
+                  <li>Redesigned onboarding flow, increasing conversion by 28%</li>
+                  <li>Created design system from 0→1</li>
+                  <li>Introduced new card layout, resulting in 1.5% more multi-account users</li>
                 </ul>
               </div>
             </div>
@@ -400,7 +421,7 @@ export default function Home() {
                     />
                   </div>
                   <div className="p-6">
-                    <h3 className="text-xl font-bold text-black mb-2 leading-10">
+                    <h3 ref={shieldRef} className="text-xl font-bold text-black mb-2 leading-10">
   SHIELD DESIGN SYSTEM ( 0 to 1) :
   <br/> UNIFIED DESIGN LANGUAGE
                     </h3>
@@ -420,8 +441,8 @@ export default function Home() {
                     />
                   </div>
                   <div className="p-6">
-                    <h3 className="text-xl font-bold leading-10 text-black mb-2">
-                   CUSTOMER APP : ONBOARDING REDESIGN.
+                    <h3 ref={onboardingRef} className="text-xl font-bold leading-10 text-black mb-2">
+                   CUSTOMER APP: ONBOARDING REDESIGN.
                     </h3>
                     <p className="text-sm text-gray-600 mb-4">
                     REDESIGN /  SAAS / INSPECTION MANAGEMENT TOOL
@@ -455,7 +476,7 @@ export default function Home() {
               <div>
                 <p className="text-gray-400 text-sm mb-4">{/* 2020 — PRESENT */}</p>
                 <p className="text-purple-600 text-sm mb-4">https://flujo.io/</p>
-                <h2 className="text-2xl font-bold mb-8 leading-tight">
+                <h2 ref={flujoRef} className="text-2xl font-bold mb-8 leading-tight">
                   FLUJO.IO
                 </h2>
              
@@ -492,7 +513,7 @@ developers.
                 <p className="text-sm text-gray-700 mb-2">
                 0 to 1 /  SAAS / COMPLEX DATA DESIGN
                   </p>
-                  <h3 className="text-xl font-bold uppercase text-black mb-2 leading-[40px]">
+                  <h3 ref={flujoDescRef} className="text-xl font-bold uppercase text-black mb-2 leading-[40px]">
                   FLUJO IS A COMMUNICATION & COLLABORATION SUITE FOR TEAMS. WITH NATIVELY BUILT KEY BUSINESS ESSENTIALS.
                   </h3>
                   
@@ -507,8 +528,8 @@ developers.
               {/* Left - Heading & Hero Image */}
               <div>
                 <p className="text-purple-600 text-sm mb-4">https://akiflow.com/</p>
-                <h2 className="text-2xl font-bold mb-8 leading-tight flex items-center gap-3">
-                AKIFLOW. ( YC-S20 ) <span><Image src="/yc.png" alt="Y Combinator" width={40} height={40} className="rounded-md" /></span>
+                <h2 ref={akiflowRef} className="text-2xl font-bold mb-8 leading-tight flex items-center gap-3">
+                AKIFLOW. (YC-S20) <span><Image src="/yc.png" alt="Y Combinator" width={40} height={40} className="rounded-md" /></span>
                 </h2>
              
               </div>
@@ -533,9 +554,9 @@ ACCOUNT MANAGEMENT FEATURE SETS.
               {/* Left - Heading & Hero Image */}
               <div>
                 <p className="text-gray-400 text-sm mb-4">{/* 2020 - ( 6 Months ) _ */}</p>
-                <h2 className="text-2xl font-bold mb-8 leading-[40px]">
+                <h2 ref={hdbRef} className="text-2xl font-bold mb-8 leading-[40px]">
                 <a href="https://tinyurl.com/4yhe7cbp" target="_blank" rel="noopener noreferrer" className="text-black hover:underline">
-                  HDB ON THE GO <br/>[ 5M + DOWNLOADS ]
+                  HDB ON THE GO <br/>[5M+ DOWNLOADS]
                 </a>
                 </h2>
              
@@ -572,7 +593,7 @@ DEVELOPMENT. 
                 <p className="text-sm text-gray-700 mb-4">
                 0 to 1 /  FINTECH / BANKING
                   </p>
-                  <h3 className="text-xl font-bold uppercase text-black mb-2 leading-[40px]">
+                  <h3 ref={hdbDescRef} className="text-xl font-bold uppercase text-black mb-2 leading-[40px]">
                   HDB FINANCIAL SERVICES IS A RBI REGISTERED INDIA&apos;S MOST TRUSTED LOAN PLATFORM FOR MORE THAN 17 YEARS WITH OVER 8 MILLION USERS AND 1700+ BRANCHES.
                   </h3>
 

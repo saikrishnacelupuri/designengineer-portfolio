@@ -39,14 +39,16 @@ const projects = [
   },
   {
     id: 4,
-    title: "INTERNAL DESIGN SYSTEM",
+    title: " NDS: NUROLE DESIGN SYSTEM",
     description: "A scalable React + Tailwind design system with Storybook, built for component reusability, consistent UI, and rapid prototyping.",
     tags: ["React", "TailwindCSS", "Storybook", "Component Libraries"],
     date: "2023",
     type: "system",
-    image: "/work-designer/Works section design.png",
-    buttonText: "VIEW STORYBOOK",
-    buttonUrl: "CONFIDENTIAL🤫"
+    image: "/NDS-demo.gif",
+    buttonText: "CONFIDENTIAL",
+    buttonUrl: ""
+  
+  
   },
   {
     id: 5,
@@ -204,6 +206,7 @@ export default function DeveloperTimeline() {
                     <iframe
                       src="https://www.aishare.website/"
                       className="w-full h-full border-0"
+                      style={{ objectFit: 'contain' }}
                       title="AIshare Website"
                       loading="lazy"
                     />
@@ -213,6 +216,7 @@ export default function DeveloperTimeline() {
                     <iframe
                       src="https://tier2-sponsors-uk.vercel.app/"
                       className="w-full h-full border-0"
+                      style={{ objectFit: 'contain' }}
                       title="Tier2 Sponsors UK Website"
                       loading="lazy"
                     />
@@ -223,7 +227,7 @@ export default function DeveloperTimeline() {
                       src={project.image}
                       alt={project.title}
                       fill
-                      className="object-cover transition-opacity duration-300"
+                      className="object-contain transition-opacity duration-300"
                     />
                   </div>
                 )}

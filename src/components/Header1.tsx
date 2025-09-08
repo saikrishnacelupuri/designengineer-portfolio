@@ -39,7 +39,7 @@ export const Header1 = ({ isDeveloperMode = false, setIsDeveloperMode }: Header1
         />
         
         {/* Content wrapper to ensure content stays above glass effect */}
-        <div className="relative z-10 flex gap-2 sm:gap-6 items-center justify-between w-full">
+        <div className="relative z-10 flex items-center w-full">
         {/* Avatar - Left side */}
         <div className="flex items-center">
           <Image
@@ -52,7 +52,7 @@ export const Header1 = ({ isDeveloperMode = false, setIsDeveloperMode }: Header1
         </div>
         
         {/* Mode Toggle - Center */}
-        <div className="flex items-center gap-1 sm:gap-3">
+        <div className="flex items-center gap-1 sm:gap-3 absolute left-1/2 transform -translate-x-1/2">
           <span 
             onClick={() => setIsDeveloperMode?.(false)}
             className={`text-xs sm:text-sm font-bold tracking-wider cursor-pointer transition-colors ${
@@ -90,7 +90,7 @@ export const Header1 = ({ isDeveloperMode = false, setIsDeveloperMode }: Header1
         </div>
         
         {/* Contact Button - Right side */}
-        <div className="flex items-center">
+        <div className="flex items-center ml-auto">
           <a href="mailto:krishnacelupuri@gmail.com">
             <Button size="sm" className="bg-black text-white hover:bg-gray-800 hover:cursor-pointer text-xs sm:text-sm px-2 sm:px-4">CONTACT</Button>
           </a>
