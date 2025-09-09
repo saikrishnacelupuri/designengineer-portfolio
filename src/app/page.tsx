@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Lenis from "lenis";
 import "lenis/dist/lenis.css";
 import CircularText from "../components/CircularText";
-import { useLettersSlideUp } from "../hooks/useLettersSlideUp";
+// import { useLettersSlideUp } from "../hooks/useLettersSlideUp";
 
 import HorizontalGallery from "../components/HorizontalGallery";
 import DeveloperTimeline from "../components/DeveloperTimeline";
@@ -16,19 +16,19 @@ import { MouseImageTrail } from "../components/MouseImageTrail";
 export default function Home() {
   const [isDeveloperMode, setIsDeveloperMode] = useState(false);
   
-  // Letters slide up animation refs for work titles
-  const nuroleRef = useLettersSlideUp();
-  const matchingAppRef = useLettersSlideUp();
-  const assessmentRef = useLettersSlideUp();
-  const guestCheckoutRef = useLettersSlideUp();
-  const papertrailRef = useLettersSlideUp();
-  const shieldRef = useLettersSlideUp();
-  const onboardingRef = useLettersSlideUp();
-  const flujoRef = useLettersSlideUp();
-  const flujoDescRef = useLettersSlideUp();
-  const akiflowRef = useLettersSlideUp();
-  const hdbRef = useLettersSlideUp();
-  const hdbDescRef = useLettersSlideUp();
+  // Letters slide up animation refs for work titles - COMMENTED OUT
+  // const nuroleRef = useLettersSlideUp();
+  // const matchingAppRef = useLettersSlideUp();
+  // const assessmentRef = useLettersSlideUp();
+  // const guestCheckoutRef = useLettersSlideUp();
+  // const papertrailRef = useLettersSlideUp();
+  // const shieldRef = useLettersSlideUp();
+  // const onboardingRef = useLettersSlideUp();
+  // const flujoRef = useLettersSlideUp();
+  // const flujoDescRef = useLettersSlideUp();
+  // const akiflowRef = useLettersSlideUp();
+  // const hdbRef = useLettersSlideUp();
+  // const hdbDescRef = useLettersSlideUp();
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -170,7 +170,7 @@ export default function Home() {
           {isDeveloperMode ? (
             <>
               <li className="mb-2 tracking-[-.01em]">
-                I'm a Design Engineer who bridges the gap between design and code.
+                I&apos;m a Design Engineer who bridges the gap between design and code.
               </li>
               <li className="tracking-[-.01em]">
                 I prototype, build, and ship polished interfaces with React, TypeScript, and Tailwind. My focus is on design systems, motion, and AI-driven workflows that feel as good as they look.
@@ -257,7 +257,7 @@ export default function Home() {
               {/* Left - Heading & Hero Image */}
               <div>
                 <p className="text-white font-semibold text-sm mb-4">{/* 2020 — PRESENT */}</p>
-                <h2 ref={nuroleRef} className="text-2xl font-bold mb-8 leading-tight">
+                <h2 className="text-2xl font-bold mb-8 leading-tight">
                   <a href="https://www.nurole.com" target="_blank" rel="noopener noreferrer" className="text-white hover:underline">
                     NUROLE.COM
                   </a>
@@ -300,7 +300,7 @@ export default function Home() {
                   />
                 </div>
                 <div className="p-8">
-                  <h3 ref={matchingAppRef} className="text-2xl font-bold text-white mb-2 leading-[48px]">
+                  <h3 className="text-2xl font-bold text-white mb-2 leading-[48px]">
                     MATCHING APP: 0→1 INTERNAL APPLICATION TO SOURCE & TARGET CANDIDATES FOR ROLES
                   </h3>
                   <p className="text-sm text-gray-200 mb-6">
@@ -321,7 +321,7 @@ export default function Home() {
                     />
                   </div>
                   <div className="p-6">
-                    <h3 ref={assessmentRef} className="text-xl font-bold text-white mb-2 leading-10">
+                    <h3 className="text-xl font-bold text-white mb-2 leading-10">
                     INTERNAL ASSESSMENT VIEW IN CANDIDATE ASSESSMENT TOOLING
                     </h3>
                     <p className="text-sm text-gray-200 mb-4">
@@ -340,7 +340,7 @@ export default function Home() {
                     />
                   </div>
                   <div className="p-6">
-                    <h3 ref={guestCheckoutRef} className="text-xl font-bold leading-10 text-white mb-2">
+                    <h3 className="text-xl font-bold leading-10 text-white mb-2">
                     GUEST CHECKOUT: ALLOWING NON-MEMBERS TO APPLY FOR ROLES
                     </h3>
                     <p className="text-sm text-gray-200 mb-4">
@@ -369,7 +369,7 @@ export default function Home() {
               {/* Left - Heading & Hero Image */}
               <div>
                 <p className="text-gray-400 text-sm mb-4">{/* 2020 — 2022 */}</p>
-                <h2 ref={papertrailRef} className="text-2xl font-bold mb-8 leading-tight">
+                <h2 className="text-2xl font-bold mb-8 leading-tight">
                   <a href="https://www.papertrail.io/" target="_blank" rel="noopener noreferrer" className="text-black hover:underline">
                     PAPERTRAIL.IO
                   </a>
@@ -421,7 +421,7 @@ export default function Home() {
                     />
                   </div>
                   <div className="p-6">
-                    <h3 ref={shieldRef} className="text-xl font-bold text-black mb-2 leading-10">
+                    <h3 className="text-xl font-bold text-black mb-2 leading-10">
   SHIELD DESIGN SYSTEM ( 0 to 1) :
   <br/> UNIFIED DESIGN LANGUAGE
                     </h3>
@@ -441,7 +441,7 @@ export default function Home() {
                     />
                   </div>
                   <div className="p-6">
-                    <h3 ref={onboardingRef} className="text-xl font-bold leading-10 text-black mb-2">
+                    <h3 className="text-xl font-bold leading-10 text-black mb-2">
                    CUSTOMER APP: ONBOARDING REDESIGN.
                     </h3>
                     <p className="text-sm text-gray-600 mb-4">
@@ -476,7 +476,7 @@ export default function Home() {
               <div>
                 <p className="text-gray-400 text-sm mb-4">{/* 2020 — PRESENT */}</p>
                 <p className="text-purple-600 text-sm mb-4">https://flujo.io/</p>
-                <h2 ref={flujoRef} className="text-2xl font-bold mb-8 leading-tight">
+                <h2 className="text-2xl font-bold mb-8 leading-tight">
                   FLUJO.IO
                 </h2>
              
@@ -513,7 +513,7 @@ developers.
                 <p className="text-sm text-gray-700 mb-2">
                 0 to 1 /  SAAS / COMPLEX DATA DESIGN
                   </p>
-                  <h3 ref={flujoDescRef} className="text-xl font-bold uppercase text-black mb-2 leading-[40px]">
+                  <h3 className="text-xl font-bold uppercase text-black mb-2 leading-[40px]">
                   FLUJO IS A COMMUNICATION & COLLABORATION SUITE FOR TEAMS. WITH NATIVELY BUILT KEY BUSINESS ESSENTIALS.
                   </h3>
                   
@@ -528,7 +528,7 @@ developers.
               {/* Left - Heading & Hero Image */}
               <div>
                 <p className="text-purple-600 text-sm mb-4">https://akiflow.com/</p>
-                <h2 ref={akiflowRef} className="text-2xl font-bold mb-8 leading-tight flex items-center gap-3">
+                <h2 className="text-2xl font-bold mb-8 leading-tight flex items-center gap-3">
                 AKIFLOW. (YC-S20) <span><Image src="/yc.png" alt="Y Combinator" width={40} height={40} className="rounded-md" /></span>
                 </h2>
              
@@ -554,7 +554,7 @@ ACCOUNT MANAGEMENT FEATURE SETS.
               {/* Left - Heading & Hero Image */}
               <div>
                 <p className="text-gray-400 text-sm mb-4">{/* 2020 - ( 6 Months ) _ */}</p>
-                <h2 ref={hdbRef} className="text-2xl font-bold mb-8 leading-[40px]">
+                <h2 className="text-2xl font-bold mb-8 leading-[40px]">
                 <a href="https://tinyurl.com/4yhe7cbp" target="_blank" rel="noopener noreferrer" className="text-black hover:underline">
                   HDB ON THE GO <br/>[5M+ DOWNLOADS]
                 </a>
@@ -593,7 +593,7 @@ DEVELOPMENT. 
                 <p className="text-sm text-gray-700 mb-4">
                 0 to 1 /  FINTECH / BANKING
                   </p>
-                  <h3 ref={hdbDescRef} className="text-xl font-bold uppercase text-black mb-2 leading-[40px]">
+                  <h3 className="text-xl font-bold uppercase text-black mb-2 leading-[40px]">
                   HDB FINANCIAL SERVICES IS A RBI REGISTERED INDIA&apos;S MOST TRUSTED LOAN PLATFORM FOR MORE THAN 17 YEARS WITH OVER 8 MILLION USERS AND 1700+ BRANCHES.
                   </h3>
 
