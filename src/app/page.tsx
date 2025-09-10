@@ -163,7 +163,7 @@ export default function Home() {
   {isDeveloperMode ? (
     <>FRONT-END DEVELOPER<br/>WHO CAN DESIGN<br/><span className="text-[#8C8C8C]">BASED IN LONDON, UK</span></>
   ) : (
-    <>KRISHNA CELUPURI ツ<br/>PRODUCT DESIGNER<br/><span className="text-[#8C8C8C]">BASED IN LONDON, UK</span></>
+    <>KRISHNA CELUPURI ツ<br/>SR.PRODUCT DESIGNER<br/><span className="text-[#8C8C8C]">BASED IN LONDON, UK</span></>
   )}
 </h1>
         <ol className="font-mono list-inside list-[square] text-sm sm:text-base lg:text-lg">
@@ -199,7 +199,7 @@ export default function Home() {
             <>
               <button
                 onClick={() => window.open("https://github.com/saikrishnacelupuri", "_blank")}
-                className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-white text-black gap-2 hover:bg-gray-200 font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
+                className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-white text-black gap-2 hover:bg-gray-200 font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto"
               >
                 <Image
                   src="/github-mark-white.svg"
