@@ -57,7 +57,7 @@ export default function FloatingMenuBar({
           <button
             onClick={() => setIsDeveloperMode(!isDeveloperMode)}
             className={`relative w-12 h-6 rounded-full transition-colors duration-300 ${
-              isDeveloperMode ? 'bg-[#38BDF8]' : 'bg-[#12B67A]'
+              isDeveloperMode ? 'bg-[#40A0FF]' : 'bg-[#12B67A]'
             }`}
           >
             <div

@@ -37,7 +37,7 @@ export default function CustomCursor({ children, isDeveloperMode }: CustomCursor
         <svg
           className={`size-6 transition-all duration-300 ${
             isDeveloperMode 
-              ? 'text-[#38BDF8]'
+              ? 'text-[#40A0FF]'
               : 'text-[#12B67A]'
           }`}
           xmlns="http://www.w3.org/2000/svg"
@@ -59,7 +59,7 @@ export default function CustomCursor({ children, isDeveloperMode }: CustomCursor
         <div 
           className={`px-2 py-1 text-sm text-white transition-colors duration-300 ${
             isDeveloperMode
-              ? 'bg-[#38BDF8]'
+              ? 'bg-[#40A0FF]'
               : 'bg-[#12B67A]'
           }`}
         >

@@ -210,13 +210,13 @@ export default function Home() {
                   height={24}
                   className="invert hover:cursor-pointer"
                 />
-                GitHub
+                GITHUB
               </button>
               <button
                 onClick={() => window.open("https://www.linkedin.com/in/krishnacelupuri/", "_blank")}
                 className="rounded-full border border-solid border-white/[.145] transition-colors flex items-center justify-center hover:cursor-pointer hover:bg-[#1a1a1a] hover:border-transparent hover:scale-105 text-white font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
               >
-                LinkedIn
+                LINKEDIN
               </button>
             </>
           ) : (
