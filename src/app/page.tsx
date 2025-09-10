@@ -12,6 +12,7 @@ import { Header1 } from "../components/Header1";
 import { Case2Wrapper } from "../components/Case2Wrapper";
 import { Footer1 } from "../components/Footer1";
 import { MouseImageTrail } from "../components/MouseImageTrail";
+import CustomCursor from "../components/CustomCursor";
 
 export default function Home() {
   const [isDeveloperMode, setIsDeveloperMode] = useState(false);
@@ -53,11 +54,12 @@ export default function Home() {
   }, []);
 
   return (
-    <div 
-      className={`relative transition-colors duration-300 ${
-        isDeveloperMode ? 'bg-black text-white' : 'bg-white text-black'
-      }`}
-    >
+    <CustomCursor isDeveloperMode={isDeveloperMode}>
+      <div 
+        className={`relative transition-colors duration-300 ${
+          isDeveloperMode ? 'bg-black text-white' : 'bg-white text-black'
+        }`}
+      >
       {isDeveloperMode && (
         <div className="fixed inset-0 -z-10 h-full w-full [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]"></div>
       )}
@@ -163,7 +165,7 @@ export default function Home() {
   {isDeveloperMode ? (
     <>FRONT-END DEVELOPER<br/>WHO CAN DESIGN<br/><span className="text-[#8C8C8C]">BASED IN LONDON, UK</span></>
   ) : (
-    <>KRISHNA CELUPURI ツ<br/>SR.PRODUCT DESIGNER<br/><span className="text-[#8C8C8C]">BASED IN LONDON, UK</span></>
+    <>KRISHNA CELUPURI ツ<br/>DESIGN ENGINEER<br/><span className="text-[#8C8C8C]">BASED IN LONDON, UK</span></>
   )}
 </h1>
         <ol className="font-mono list-inside list-[square] text-sm sm:text-base lg:text-lg">
@@ -208,13 +210,13 @@ export default function Home() {
                   height={24}
                   className="invert hover:cursor-pointer"
                 />
-                GitHub
+                GITHUB
               </button>
               <button
                 onClick={() => window.open("https://www.linkedin.com/in/krishnacelupuri/", "_blank")}
                 className="rounded-full border border-solid border-white/[.145] transition-colors flex items-center justify-center hover:cursor-pointer hover:bg-[#1a1a1a] hover:border-transparent hover:scale-105 text-white font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
               >
-                LinkedIn
+                LINKEDIN
               </button>
             </>
           ) : (
@@ -691,6 +693,7 @@ DEVELOPMENT. 
 
       {/* Footer */}
       <Footer1 />
-    </div>
+      </div>
+    </CustomCursor>
   );
 }
