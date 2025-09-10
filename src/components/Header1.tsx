@@ -92,7 +92,7 @@ export const Header1 = ({ isDeveloperMode = false, setIsDeveloperMode }: Header1
         {/* Contact Button - Right side */}
         <div className="flex items-center ml-auto">
           <a href="mailto:krishnacelupuri@gmail.com">
-            <Button size="sm" className="bg-black text-white hover:bg-gray-800 hover:cursor-pointer text-xs sm:text-sm px-2 sm:px-4">CONTACT</Button>
+            <Button size="sm" className="bg-black text-white hover:bg-gray-800 hover:cursor-pointer text-xs sm:text-sm px-2 rounded-full sm:px-4">CONTACT</Button>
           </a>
         </div>
         </div> {/* Close content wrapper */}

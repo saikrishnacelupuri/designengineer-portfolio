@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 interface GalleryImage {
   src: string;
@@ -14,21 +14,23 @@ interface HorizontalGalleryProps {
 
 const HorizontalGallery = ({ images }: HorizontalGalleryProps) => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
   
   useEffect(() => {
     const scrollContainer = scrollRef.current;
     if (!scrollContainer) return;
 
     let animationId: number;
-    const scrollSpeed = 2; // pixels per frame
+    const scrollSpeed = 1; // Smooth continuous scrolling
     
     const autoScroll = () => {
       if (scrollContainer) {
         scrollContainer.scrollLeft += scrollSpeed;
         
-        // Reset to beginning when we reach halfway (since we duplicated images)
-        const halfWidth = scrollContainer.scrollWidth / 2;
-        if (scrollContainer.scrollLeft >= halfWidth) {
+        // Check if we've scrolled past the first set of images
+        const singleSetWidth = scrollContainer.scrollWidth / 2;
+        if (scrollContainer.scrollLeft >= singleSetWidth) {
+          // Seamlessly reset to the beginning (this creates infinite loop)
           scrollContainer.scrollLeft = 0;
         }
       }
