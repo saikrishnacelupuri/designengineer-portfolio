@@ -40,7 +40,7 @@ export default function Home() {
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
-      
+
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       prevent: (node) => {
         // Prevent Lenis on horizontal scroll containers
@@ -242,6 +242,7 @@ export default function Home() {
                     src="/nr-team2.jpeg"
                     alt="Team Offsite - 2022 | Chester, UK"
                     fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover"
                   />
                
