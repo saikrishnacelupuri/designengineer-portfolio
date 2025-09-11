@@ -4,8 +4,6 @@ import { useState, useEffect } from "react";
 import Lenis from "lenis";
 import "lenis/dist/lenis.css";
 import CircularText from "../components/CircularText";
-// import { useLettersSlideUp } from "../hooks/useLettersSlideUp";
-
 import HorizontalGallery from "../components/HorizontalGallery";
 import DeveloperTimeline from "../components/DeveloperTimeline";
 import { Header1 } from "../components/Header1";
@@ -14,6 +12,8 @@ import { Footer1 } from "../components/Footer1";
 import { MouseImageTrail } from "../components/MouseImageTrail";
 import CustomCursor from "../components/CustomCursor";
 import { CurtainTransition } from "../components/CurtainTransition";
+import { TestimonialsFeature7 } from "@/components/TestimonialsFeature7";
+
 
 export default function Home() {
   const [isDeveloperMode, setIsDeveloperMode] = useState(false);
@@ -35,23 +35,12 @@ export default function Home() {
     }, 1000); // Total transition time
   };
   
-  // Letters slide up animation refs for work titles - COMMENTED OUT
-  // const nuroleRef = useLettersSlideUp();
-  // const matchingAppRef = useLettersSlideUp();
-  // const assessmentRef = useLettersSlideUp();
-  // const guestCheckoutRef = useLettersSlideUp();
-  // const papertrailRef = useLettersSlideUp();
-  // const shieldRef = useLettersSlideUp();
-  // const onboardingRef = useLettersSlideUp();
-  // const flujoRef = useLettersSlideUp();
-  // const flujoDescRef = useLettersSlideUp();
-  // const akiflowRef = useLettersSlideUp();
-  // const hdbRef = useLettersSlideUp();
-  // const hdbDescRef = useLettersSlideUp();
+
 
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
+      
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       prevent: (node) => {
         // Prevent Lenis on horizontal scroll containers
@@ -626,8 +615,8 @@ DEVELOPMENT. 
         <DeveloperTimeline />
       )}
 
-      {/* Testimonials Section 
-      {!isDeveloperMode && <TestimonialsFeature7 />} */}
+      {/* Testimonials Section  */}
+      {!isDeveloperMode && <TestimonialsFeature7 />}
 
    
 
@@ -700,7 +689,7 @@ DEVELOPMENT. 
       </div>
 
       {/* Curtain Transition */}
-      <CurtainTransition isTransitioning={isTransitioning} isDeveloperMode={isDeveloperMode} />
+      <CurtainTransition isTransitioning={isTransitioning} />
     </CustomCursor>
   );
 }

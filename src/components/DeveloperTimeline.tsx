@@ -9,7 +9,7 @@ const projects = [
     title: "AISHARE",
     description: "A web platform showcasing AI-related resources and experiments, built to demonstrate polished front-end UI and smooth interactions.",
     tags: ["Next.js", "React", "TailwindCSS", "Vercel"],
-    date: "2024",
+
     type: "project",
     image: "/work-designer/Works section design.png",
     buttonText: "VIEW WEBSITE",
@@ -20,7 +20,7 @@ const projects = [
     title: "TIER2 SPONSORS UK", 
     description: "A web app that helps users explore UK Tier 2 visa sponsor companies. Focused on accessibility, performance, and data presentation.",
     tags: ["Next.js", "React", "TailwindCSS", "Vercel"],
-    date: "2024",
+   
     type: "project",
     image: "/OG_tier2.png",
     buttonText: "VIEW APPLICATION",
@@ -31,7 +31,7 @@ const projects = [
     title: "ART & FILTERS EXPERIMENTS",
     description: "A personal playground for design and engineering experiments — animations, GSAP effects, interaction prototypes, and creative coding explorations.",
     tags: ["Next.js", "React", "GSAP", "Framer Motion", "TailwindCSS"],
-    date: "2023", 
+
     type: "experiment",
     image: "/art-experiments.gif",
     buttonText: "VIEW EXPERIMENTS",
@@ -42,7 +42,7 @@ const projects = [
     title: " NDS: NUROLE DESIGN SYSTEM",
     description: "A scalable React + Tailwind design system with Storybook, built for component reusability, consistent UI, and rapid prototyping.",
     tags: ["React", "TailwindCSS", "Storybook", "Component Libraries"],
-    date: "2023",
+ 
     type: "system",
     image: "/NDS-demo.gif",
     buttonText: "CONFIDENTIAL",
@@ -55,7 +55,7 @@ const projects = [
     title: "DESIGN ENGINEER PORTFOLIO (KRISHNCELUPURI.COM)",
     description: "A living portfolio site that blends design and engineering — custom animations, UI polish, and interactive elements that highlight hybrid skills.",
     tags: ["Next.js", "React", "TailwindCSS", "GSAP", "Framer Motion", "Vercel"],
-    date: "2024",
+
     type: "project",
     image: "/krishnacelupuri.com - opengraph.png",
     buttonText: "VIEW SOURCE CODE",
@@ -166,7 +166,7 @@ export default function DeveloperTimeline() {
                 {/* Project info section */}
                 <div className="flex flex-col gap-4">
                   <small className="text-xs font-mono uppercase text-gray-400">
-                    {project.type.toUpperCase()} • {project.date}
+                    {project.type.toUpperCase()} 
                   </small>
                   
                   {/* Heading */}

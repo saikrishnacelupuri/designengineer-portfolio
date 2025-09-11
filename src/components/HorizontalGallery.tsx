@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 interface GalleryImage {
   src: string;
@@ -14,7 +14,6 @@ interface HorizontalGalleryProps {
 
 const HorizontalGallery = ({ images }: HorizontalGalleryProps) => {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
   
   useEffect(() => {
     const scrollContainer = scrollRef.current;
