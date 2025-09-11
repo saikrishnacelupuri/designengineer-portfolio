@@ -28,7 +28,26 @@ export const MouseImageTrail = () => {
       ]}
     >
       <section className="relative grid h-[60vh] sm:h-screen w-full place-content-center bg-white">
-        <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]"></div>
+        {/* Background Grid - Same as hero section */}
+        <svg 
+          className="absolute inset-0 w-full h-full pointer-events-none" 
+          width="100%" 
+          height="100%" 
+          xmlns="http://www.w3.org/2000/svg"
+          style={{ zIndex: 0 }}
+        >
+          <defs>
+            <pattern id="mouseTrailDottedGrid" width="30" height="30" patternUnits="userSpaceOnUse">
+              <circle 
+                cx="2" 
+                cy="2" 
+                r="1" 
+                fill="rgba(0,0,0,0.2)" 
+              />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#mouseTrailDottedGrid)" />
+        </svg>
         <div className="text-center">
           <h2 className="text-2xl sm:text-4xl md:text-6xl font-bold uppercase text-black mb-4">
             PEOPLE & PLAY

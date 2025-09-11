@@ -13,9 +13,27 @@ import { Case2Wrapper } from "../components/Case2Wrapper";
 import { Footer1 } from "../components/Footer1";
 import { MouseImageTrail } from "../components/MouseImageTrail";
 import CustomCursor from "../components/CustomCursor";
+import { CurtainTransition } from "../components/CurtainTransition";
 
 export default function Home() {
   const [isDeveloperMode, setIsDeveloperMode] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  const handleModeChange = (newMode: boolean) => {
+    if (newMode === isDeveloperMode || isTransitioning) return;
+    
+    setIsTransitioning(true);
+    
+    // After overlay covers screen completely, change mode
+    setTimeout(() => {
+      setIsDeveloperMode(newMode);
+    }, 500); // Timing matches the slide down animation
+    
+    // Complete transition after overlay slides back up
+    setTimeout(() => {
+      setIsTransitioning(false);
+    }, 1000); // Total transition time
+  };
   
   // Letters slide up animation refs for work titles - COMMENTED OUT
   // const nuroleRef = useLettersSlideUp();
@@ -63,72 +81,33 @@ export default function Home() {
       {isDeveloperMode && (
         <div className="fixed inset-0 -z-10 h-full w-full [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]"></div>
       )}
-      <Header1 isDeveloperMode={isDeveloperMode} setIsDeveloperMode={setIsDeveloperMode} />
+      <Header1 isDeveloperMode={isDeveloperMode} setIsDeveloperMode={handleModeChange} />
       {/* Hero Section */}
-      <div className="relative flex flex-col items-center justify-center pt-[120px] sm:pt-[280px] px-4"
+      <div className="relative flex flex-col items-center justify-center py-[120px] sm:pt-[280px] px-4"
       >
 
-        {/* Bg-Pattern - Designer Mode */}
-        {!isDeveloperMode && (
-          <div 
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              background: 'radial-gradient(#d1d5db 1px, transparent 1px)',
-              backgroundSize: '24px 24px',
-              maskImage: 'radial-gradient(ellipse 60% 50% at 50% 50%, #000 60%, transparent 100%)',
-              WebkitMaskImage: 'radial-gradient(ellipse 60% 50% at 50% 50%, #000 60%, transparent 100%)',
-              zIndex: 0
-            }}
-          ></div>
-        )}
-
-        {/* Bg-Pattern - Developer Mode */}
-        {isDeveloperMode && (
-          <div
-            className="absolute inset-0 flex items-center justify-center pointer-events-none"
-            style={{ zIndex: 0 }}
-          >
-            <Image
-              src="/bg-pixels.svg"
-              alt="Background pixels"
-              width={1200}
-              height={800}
-              className="opacity-30"
-            />
-          </div>
-        )}
-
-      {/*  Original Toggle Component
-      <div className="relative flex items-center gap-6 mb-16" style={{ zIndex: 10 }}>
-        <span 
-          onClick={() => setIsDeveloperMode(false)}
-          className={`text-xl font-bold tracking-wider cursor-pointer ${!isDeveloperMode ? 'text-black' : 'text-gray-500'} ${!isDeveloperMode ? 'underline' : ''}`}
+        {/* Background Grid */}
+        <svg 
+          className="absolute inset-0 w-full h-full pointer-events-none" 
+          width="100%" 
+          height="100%" 
+          xmlns="http://www.w3.org/2000/svg"
+          style={{ zIndex: 0 }}
         >
-          DESIGNER
-        </span>
-        
-        <button
-          onClick={() => setIsDeveloperMode(!isDeveloperMode)}
-          className={`relative w-20 h-10 rounded-full transition-colors duration-300 hover:cursor-pointer ${
-            isDeveloperMode ? 'bg-[#38BDF8]' : 'bg-[#12B67A]'
-          }`}
-        >
-          <div
-            className={`absolute top-1 w-8 h-8 bg-white rounded-full transition-transform duration-300 ${
-              isDeveloperMode ? 'translate-x-10' : 'translate-x-1'
-            }`}
-          />
-        </button>
-        
-        <span 
-          onClick={() => setIsDeveloperMode(true)}
-          className={`text-xl font-bold tracking-wider cursor-pointer ${isDeveloperMode ? 'text-white' : 'text-gray-500'} ${isDeveloperMode ? 'underline' : ''}`}
-        >
-          DEVELOPER
-        </span>
-      </div>
+          <defs>
+            <pattern id="dottedGrid" width="30" height="30" patternUnits="userSpaceOnUse">
+              <circle 
+                cx="2" 
+                cy="2" 
+                r="1" 
+                fill={isDeveloperMode ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.15)"} 
+              />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#dottedGrid)" />
+        </svg>
 
-       */}
+   
      
       <main className={`flex flex-col lg:flex-row gap-8 lg:gap-[80px] items-center max-w-[1000px] w-full ${
         isDeveloperMode ? 'lg:flex-row-reverse' : 'lg:flex-row'
@@ -229,7 +208,7 @@ export default function Home() {
               </button>
               <button
                 onClick={() => window.open("https://linkedin.com/in/krishnacelupuri/", "_blank")}
-                className="uppercase rounded-full border-1 border-solid border-black dark:border-white/[.145] transition-colors flex items-center justify-center hover:cursor-pointer hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full"
+                className="uppercase rounded-full border-1 border-solid border-black dark:border-white/[.145] transition-colors flex items-center justify-center hover:cursor-pointer bg-white hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full"
               >
                 LinkedIn
               </button>
@@ -242,10 +221,15 @@ export default function Home() {
 
 
       </main>
+      
+      {/* Case2 - Trusted by market leaders - Inside hero section */}
+      {!isDeveloperMode && (
+        <div className="relative mt-16 sm:mt-24">
+          <Case2Wrapper />
+        </div>
+      )}
       </div>
 
-      {/* Case2 - Trusted by market leaders */}
-      {!isDeveloperMode && <Case2Wrapper />}
 
 
 
@@ -359,9 +343,29 @@ export default function Home() {
 
  {/* PAPERTRAIL Section */}
  {!isDeveloperMode && (
-        <section className="w-full bg-white pt-[60px] pb-[60px] sm:pt-[120px] sm:pb-[120px]">
+        <section className="relative w-full bg-white pt-[60px] pb-[60px] sm:pt-[120px] sm:pb-[120px]">
+          {/* Background Grid - Same as hero section */}
+          <svg 
+            className="absolute inset-0 w-full h-full pointer-events-none" 
+            width="100%" 
+            height="100%" 
+            xmlns="http://www.w3.org/2000/svg"
+            style={{ zIndex: 0 }}
+          >
+            <defs>
+              <pattern id="papertrailDottedGrid" width="30" height="30" patternUnits="userSpaceOnUse">
+                <circle 
+                  cx="2" 
+                  cy="2" 
+                  r="1" 
+                  fill="rgba(0,0,0,0.2)" 
+                />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#papertrailDottedGrid)" />
+          </svg>
           
-          <div className="max-w-[1000px] mx-auto px-4">
+          <div className="relative max-w-[1000px] mx-auto px-4" style={{ zIndex: 1 }}>
       
       
 
@@ -694,6 +698,9 @@ DEVELOPMENT. 
       {/* Footer */}
       <Footer1 />
       </div>
+
+      {/* Curtain Transition */}
+      <CurtainTransition isTransitioning={isTransitioning} isDeveloperMode={isDeveloperMode} />
     </CustomCursor>
   );
 }
