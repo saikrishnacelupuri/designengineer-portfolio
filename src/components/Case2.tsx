@@ -18,11 +18,16 @@ export const Case2 = ({ iconImages = [] }: Case2Props) => {
   
   // Fallback images if none provided
   const defaultImages = [
-    'image-2MLaG7Y7XlI9xoRE9VgxBxmJ7blNcZ.png',
-    'image-KkjncelYCZtsiEAnAoRvgs20nEB7IH.png',
-    'image-T3qYlSLKV0Nh0PeSRW3YIPVgA0Mkqy.png',
-    'image-gH8Ua0YoFx9LOY2UXyPX3Rj2HFFhmF.png',
-    'london.png'
+    'Akiflow-logo-full-color.svg',
+    'Capgemini_201x_logo.svg',
+    'HDB_Financial_Services_logo.svg',
+    'Nurole-logo.svg',
+    'enthu-logo.svg',
+    'flujo-logo.svg',
+    'london.png',
+    'nexrea-logo.png',
+    'papertrail-logo.svg',
+    'rbc-logo-shield.svg'
   ];
   
   const displayImages = iconImages.length > 0 ? iconImages : defaultImages;
