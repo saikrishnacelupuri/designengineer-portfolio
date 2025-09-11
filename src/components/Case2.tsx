@@ -15,7 +15,6 @@ interface Case2Props {
 
 export const Case2 = ({ iconImages = [] }: Case2Props) => {
   const [api, setApi] = useState<CarouselApi>();
-  const [current, setCurrent] = useState(0);
   
   // Fallback images if none provided
   const defaultImages = [
@@ -33,33 +32,35 @@ export const Case2 = ({ iconImages = [] }: Case2Props) => {
       return;
     }
 
-    setTimeout(() => {
-      if (api.selectedScrollSnap() + 1 === api.scrollSnapList().length) {
-        setCurrent(0);
-        api.scrollTo(0);
-      } else {
-        api.scrollNext();
-        setCurrent(current + 1);
-      }
+    const intervalId = setInterval(() => {
+      api.scrollNext();
     }, 1000);
-  }, [api, current]);
+
+    return () => clearInterval(intervalId);
+  }, [api]);
 
   return (
-    <div className="w-full py-20 lg:py-40">
+    <div className="w-full">
       <div className="container mx-auto">
         <div className="relative w-full">
-          <div className="bg-gradient-to-r from-background via-white/0 to-background z-10 absolute left-0 top-0 right-0 bottom-0 w-full h-full"></div>
-          <Carousel setApi={setApi} className="w-full">
+          <Carousel 
+            setApi={setApi} 
+            className="w-full"
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+          >
             <CarouselContent>
               {Array.from({ length: 25 }).map((_, index) => (
                 <CarouselItem
-                  className="basis-1/4 lg:basis-1/6"
+                  className="basis-1/4 lg:basis-1/7"
                   key={index}
                 >
-                  <div className="flex rounded-md aspect-square bg-muted items-center justify-center p-4">
+                  <div className="flex rounded-md aspect-square items-center justify-center p-2">
                     {displayImages[index % displayImages.length] && (
-                      <div className="relative w-full h-full bg-gray-100 rounded-md p-2 flex items-center justify-center">
-                        <div className="relative max-w-[120px] max-h-[120px] w-full h-full">
+                      <div className="relative w-full h-full rounded-md p-1 flex items-center justify-center">
+                        <div className="relative max-w-[240px] max-h-[124px] w-full h-full">
                           <Image
                             src={`/3D/${displayImages[index % displayImages.length]}`}
                             alt={`3D Icon ${index + 1}`}

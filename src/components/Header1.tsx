@@ -82,8 +82,8 @@ export const Header1 = ({ isDeveloperMode = false, setIsDeveloperMode }: Header1
           />
         </div>
         
-        {/* Mode Toggle - Center */}
-        <div className="flex items-center gap-1 sm:gap-3 absolute left-1/2 transform -translate-x-1/2">
+        {/* Mode Toggle - Center on desktop, Right on mobile */}
+        <div className="flex items-center gap-1 sm:gap-3 ml-auto sm:absolute sm:left-1/2 sm:transform sm:-translate-x-1/2">
           <span 
             onClick={() => setIsDeveloperMode?.(false)}
             className={`text-xs sm:text-sm font-bold tracking-wider cursor-pointer transition-colors ${
@@ -120,8 +120,8 @@ export const Header1 = ({ isDeveloperMode = false, setIsDeveloperMode }: Header1
           </span>
         </div>
         
-        {/* Contact Button - Right side */}
-        <div className="flex items-center ml-auto">
+        {/* Contact Button - Right side - Hidden on mobile */}
+        <div className="hidden sm:flex items-center sm:ml-auto">
           <a href="mailto:krishnacelupuri@gmail.com">
             <Button size="sm" className="bg-black text-white hover:bg-gray-800 hover:cursor-pointer text-xs sm:text-sm px-2 rounded-full sm:px-4">CONTACT</Button>
           </a>
