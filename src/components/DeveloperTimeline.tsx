@@ -5,17 +5,6 @@ import { Globe, Flask, BookOpen, Folder } from "@phosphor-icons/react";
 
 const projects = [
   {
-    id: 1,
-    title: "AISHARE",
-    description: "A web platform showcasing AI-related resources and experiments, built to demonstrate polished front-end UI and smooth interactions.",
-    tags: ["Next.js", "React", "TailwindCSS", "Vercel"],
-
-    type: "project",
-    image: "/work-designer/Works section design.png",
-    buttonText: "VIEW WEBSITE",
-    buttonUrl: "https://www.aishare.website/"
-  },
-  {
     id: 2,
     title: "TIER2 SPONSORS UK", 
     description: "A web app that helps users explore UK Tier 2 visa sponsor companies. Focused on accessibility, performance, and data presentation.",
